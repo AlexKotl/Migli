@@ -1,0 +1,16 @@
+	#php_flag register_globals on
+	#php_flag display_errors 1
+	
+	AddDefaultCharset utf-8
+	
+	RewriteEngine   on
+	
+	RewriteRule ^details/(.*)-([0-9]+).html$ index.php?module=items&id=$2 [L]
+	RewriteRule ^store/(.*)-([0-9]+)/(.*)-([0-9]+)$ index.php?module=items&category=$4 [L]
+	RewriteRule ^store/(.*)-([0-9]+)$ index.php?module=items&category_base=$2 [L]
+	RewriteRule ^cart$ index.php?module=basket [L,QSA]
+	RewriteRule ^subscribe$ index.php?module=subscribe [L,QSA]
+	
+	RewriteRule ^images/([0-9]+).jpg$ img.php?file=upload/items/$1_1.jpg [L,QSA]
+	RewriteRule ^images/([0-9]+)/([0-9]+).jpg$ img.php?file=upload/items/$2_1.jpg [L,QSA]
+   

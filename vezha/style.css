@@ -1,0 +1,7 @@
+.film {margin:100px auto; display: block; width:500px; height:281px; border:5px solid #6ca044; border-radius: 5px;}
+.film div {position: absolute; display: block; }
+.film div img {width:500px}
+
+.controls {margin:auto; display: block; width:500px}
+.controls a {background-color:#2162ab; color:white; display: inline-block; padding:5px 10px; border:1px solid #0d1848; cursor: pointer; }
+.controls a:hover {background-color: #3f83d2}
