@@ -2,19 +2,25 @@
 <?= $tpl[content] ?>
 
 <? if (count(unserialize($tpl[items]))>0) { ?>
-<h2>Оформить заказ</h2>
+<h2>Сумма заказа: <?= "<span id='orderSum' data-items-sum='{$tpl[items_sum]}'>".$tpl[items_sum]."</span>" ?> грн</h2>
 	<form action='' class='simpleForm'>
 	<?= "<input type='hidden' name='items' value='$tpl[items]'>" ?>
 	<input type="hidden" name='action' value='order'>
+	<div class='orderText'>
+		<p/>ДОСТАВКА: По Киеву - бесплатно (самовывоза), при заказе на сумму выше 200 грн. - бесплатно на любую станцию метро. 
+		<p/>Доставка по Киеву на любую станцию метро (при заказе до 200 грн.) - 30 грн. 
+		<p/>Доставка по Украине за счет покупателя по тарифам выбранной вами компании (отдаем предпочтение Новой почте). 
+		<p/>ПРИ ЗАКАЗЕ ОТ 200 ГРН. И ОПЛАТЕ НА КАРТУ ПРИВАТБАНКА ДОСТАВКА ПО УКРАИНЕ НОВОЙ ПОЧТОЙ БЕСПЛАТНО.
+	</div>
 	<table width=500>
 		<tr><td>Имя:</td><td><input type='text' name='name' value=''></td></tr>
 		<tr class='confirm'><td>Еще одно имя:</td><td><input type='text' name='name_confirm' value=''></td></tr>
 		<tr><td>Email:</td><td><input type='text' name='email' value=''></td></tr>
 		<tr><td>Телефон:</td><td><input type='text' name='phone' value=''></td></tr>
 		<tr><td>Способ доставки:</td><td>
-			<label><input type="radio" name='delivery' value='self' checked="" data-type='self'> Самовывоз <br><small>Киев, станция <img src='/img/icons/metro.jpeg' style="vertical-align:middle"> "Нивки"</small></label> <br>
-			<label><input type="radio" name='delivery' value='self' data-type='subway'> Доставка до станции метро<br><small>доставка на любую станцию метро</small></label> <br>
-			<label><input type="radio" name='delivery' value='self' data-type='global'> Доставка по Украине<br><small>"Новая Почта" или "Укрпочта"</small></label> <br>
+			<label><input type="radio" name='delivery' value='self' checked="" data-type='self' data-cost='0'> Самовывоз <br><small>Киев, станция <img src='/img/icons/metro.jpeg' style="vertical-align:middle"> "Нивки"</small></label> <br>
+			<label><input type="radio" name='delivery' value='subway' data-type='subway' data-cost='30'> Доставка до станции метро<br><small>доставка на любую станцию метро</small></label> <br>
+			<label><input type="radio" name='delivery' value='global' data-type='global' data-cost=''> Доставка по Украине<br><small>"Новая Почта" или "Укрпочта"</small></label> <br>
 		</td></tr>
 		<tr class='delivery_input hidden' data-type='global'><td>Адрес доставки:</td><td><textarea style='height:60px' name='delivery_address'></textarea></td></tr>
 		<tr class='delivery_input hidden' data-type='subway'><td>Метро доставки:</td><td>
@@ -74,7 +80,7 @@
 			</select>
 		</td></tr>
 		<tr><td>Ваши примечания:</td><td><textarea style='height:60px' name='notes'></textarea></td></tr>
-		<tr><td></td><td><input type="submit" class='button orange' value='Оформить заказ' style='width:200px; font-size:12px'></td></tr>
+		<tr><td></td><td><input type="submit" class='button' value='Оформить заказ' style='width:200px; font-size:12px'></td></tr>
 	</table>
 	</form>
 <? } ?>

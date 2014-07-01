@@ -31,6 +31,12 @@ class CBasket {
 		return false;
 	}
 	
+	public function updateItem($id, array $data) {
+		foreach ($this->items as $k => $v) {
+			if ($v[id]==$id) $this->items[$k] = $data;
+		}
+	}
+	
 	public function getItemsCount() {
 		return count($this->items);
 	}

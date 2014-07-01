@@ -35,18 +35,28 @@
 	
 	
 	$tpl[content] .= "<table class='simpleTable'>";
+	$total_count = $total_amount = 0;
 	foreach ($cbasket->getItems() as $item) {
-		$row = $db->get_row("select * from items where id='".(int)$item[id]."'");
+		$row = $db->get_row("select * from items where id='".(int)$item[id]."'");		
 		if ($row[price_promo]) $row[price] = $row[price_promo];
+		$tpl[items_sum] += $row[price];
+		$total_count += $item[count];
+		$total_amount += $item[count] * $row[price];
 		$tpl[content] .= "<tr>
 			<td><img src='/images/$row[id].jpg?width=100'></td>
 			<td>$row[name] ".($item[variant]!='' ? "({$item[variant]})" : '')."</td>
 			<td>$row[price] грн</td>
-			<td>$item[count]</td>
+			<td>
+				<a href='/ajax/index.php?module=basket&action=change_count&id=$row[id]&value=-1'><i class='fa fa-minus-square-o'></i></a>
+				$item[count] 
+				<a href='/ajax/index.php?module=basket&action=change_count&id=$row[id]&value=1'><i class='fa fa-plus-square-o'></i></a></td>
 			<td><a data-id='$row[id]' class='delete_from_basket' title='Удалить из корзины'><img src='/img/basic/delete.png' /></a></td>
 			</tr>";
 	}
-	$tpl[content] .= "</table>";
+	$tpl[items_sum] = $total_amount;
+	$tpl[content] .= "
+		<tr><td colspan='5' style='text-align:center'>Всего товаров: <b>$total_count</b>, общая стоимость: <b>$total_amount</b> грн</td></tr>
+		</table>";
 	$tpl[items] = serialize($cbasket->getItems());
 	
 	$tpl[content] = get_tpl('basket.tpl');

@@ -1,7 +1,14 @@
 $(function() {
 
 	
-	
+	// BASKET FUNCTIONS
+	function refreshOrderSum() {
+		var items = 0;
+		items += parseInt($('#orderSum').attr('data-items-sum'));
+		if (items<200 && $('[name=delivery]:checked').val()=='subway') items += 30;
+		if (items<200 && $('[name=delivery]:checked').val()=='global') items += 40;
+		$('#orderSum').html(items);
+	}
 	$('.add_to_basket').click(function() {
 		$(this).hide().load('/ajax/index.php?module=basket&action=add',{
 			'id': $(this).attr('data-id'),
@@ -21,7 +28,7 @@ $(function() {
 	$('input[name=delivery]').change(function() {
 		$('.delivery_input').addClass('hidden');
 		$('.delivery_input[data-type='+$(this).attr('data-type')+']').removeClass('hidden');
-		//alert($(this).attr('data-type'));
+		refreshOrderSum();
 	});
 	
 	$('.changeColor').click(function() {

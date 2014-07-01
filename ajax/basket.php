@@ -15,4 +15,13 @@
 		$cbasket->removeItem($_REQUEST[id]);
 		$cbasket->save();
 	}
+	
+	if ($_REQUEST[action]=='change_count') {
+		//$cbasket->removeItem($_REQUEST[id]);
+		$item = $cbasket->getItem($_GET[id]);
+		$item[count] += (int)$_REQUEST[value];
+		$cbasket->updateItem($_GET[id], $item);
+		$cbasket->save();
+		header("location: /cart");
+	}
 ?>
