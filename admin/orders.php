@@ -1,6 +1,12 @@
 <?
 	if ($_SESSION[access_level]==1) {
 		$id = (int)$_GET[id]; 
+		
+		if ($_GET[action]=='flag') {
+			$db->query("update orders set status='$_GET[flag]' where id=$id") or die(mysql_error());
+			$id = 0;
+			$sys_message = "Статус товара изменен.";
+		}
 	
 		// LIST VIEW
 		if ($id==0) {
@@ -10,7 +16,7 @@
 				<thead><tr><th>#</th><th>Имя</th><th>Телефон</th><th>Адрес доставки</th><th>Стоимость</th><th>Дата</th><th></th></tr></thead><tbody>";
 				
 			
-			$res = $db->query("select * from orders where flag=2");
+			$res = $db->query("select * from orders where status=2");
 			while ($row=$db->fetch($res)) {
 				$description = unserialize($row[description]);
 				if ($description[delivery]=='self') $delivery = 'Самовывоз';
@@ -51,8 +57,8 @@
 				$content .= "<br><a href='/index.php?module=items&id=$row_item[id]'>{$row_item[name]} {$item[variant]} ({$row_item[price]})</a>";
 			}
 			$content .= "</td></tr></tbody></table>
-				<a href='?module=$module&action=flag&flag=3' class='btn btn-danger'>Отклонить заказ</a>
-				<a href='?module=$module&action=flag&flag=1' class='btn btn-success'>Заказ выполнен</a>";
+				<a href='?module=$module&id=$id&action=flag&flag=3' class='btn btn-danger'>Отклонить заказ</a>
+				<a href='?module=$module&id=$id&action=flag&flag=1' class='btn btn-success'>Заказ выполнен</a>";
 			
 		}
 	}
