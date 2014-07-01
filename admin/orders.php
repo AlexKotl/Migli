@@ -10,7 +10,7 @@
 				<thead><tr><th>#</th><th>Имя</th><th>Телефон</th><th>Адрес доставки</th><th>Стоимость</th><th>Дата</th><th></th></tr></thead><tbody>";
 				
 			
-			$res = $db->query("select * from orders ");
+			$res = $db->query("select * from orders where flag=2");
 			while ($row=$db->fetch($res)) {
 				$description = unserialize($row[description]);
 				if ($description[delivery]=='self') $delivery = 'Самовывоз';
@@ -44,12 +44,16 @@
 				<tr><td>Адрес доставки</td><td>".$row[description][delivery_address]."</td><tr>
 				<tr><td>Метро доставки</td><td>".$row[description][delivery_subway]."</td><tr>
 				<tr><td>Заметки</td><td>".$row[description][notes]."</td><tr>
+				<tr><td>Сумма по товарам</td><td>".$row[price]."</td><tr>
 				<tr><td>Заказ</td><td>";
 			foreach (unserialize($row[items]) as $item) {
 				$row_item = $db->get_row("select * from items where id='$item[id]'");
-				$content .= "<br><a href='/index.php?module=items&id=$row_item[id]'>{$row_item[name]} {$item[variant]}</a>";
+				$content .= "<br><a href='/index.php?module=items&id=$row_item[id]'>{$row_item[name]} {$item[variant]} ({$row_item[price]})</a>";
 			}
-			$content .= "</td></tr></tbody></table>";
+			$content .= "</td></tr></tbody></table>
+				<a href='?module=$module&action=flag&flag=3' class='btn btn-danger'>Отклонить заказ</a>
+				<a href='?module=$module&action=flag&flag=1' class='btn btn-success'>Заказ выполнен</a>";
+			
 		}
 	}
 ?>
