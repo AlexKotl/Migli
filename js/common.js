@@ -19,11 +19,13 @@ $(function() {
 			$('#basket_count').html(parseInt($('#basket_count').html())+1);
 		});
 	});
-	$('.delete_from_basket').click(function() {
+	/*
+$('.delete_from_basket').click(function() {
 		$(this).parent().parent().load('/ajax/index.php?module=basket&action=delete',{
 			'id': $(this).attr('data-id'),
 		});
 	});
+*/
 	
 	$('input[name=delivery]').change(function() {
 		$('.delivery_input').addClass('hidden');

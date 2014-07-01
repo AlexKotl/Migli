@@ -50,7 +50,7 @@
 				<a href='/ajax/index.php?module=basket&action=change_count&id=$row[id]&value=-1'><i class='fa fa-minus-square-o'></i></a>
 				<b>$item[count] </b>
 				<a href='/ajax/index.php?module=basket&action=change_count&id=$row[id]&value=1'><i class='fa fa-plus-square-o'></i></a></td>
-			<td><a data-id='$row[id]' class='delete_from_basket' title='Удалить из корзины'><img src='/img/basic/delete.png' /></a></td>
+			<td><a href='/ajax/index.php?module=basket&action=delete&id=$row[id]' class='delete_from_basket' title='Удалить из корзины'><img src='/img/basic/delete.png' /></a></td>
 			</tr>";
 	}
 	$tpl[items_sum] = $total_amount;
