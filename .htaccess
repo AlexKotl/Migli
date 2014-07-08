@@ -12,5 +12,7 @@
 	RewriteRule ^subscribe$ index.php?module=subscribe [L,QSA]
 	
 	RewriteRule ^images/([0-9]+).jpg$ img.php?file=upload/items/$1_1.jpg [L,QSA]
-	RewriteRule ^images/([0-9]+)/([0-9]+).jpg$ img.php?file=upload/items/$2_1.jpg [L,QSA]
+	RewriteRule ^images/([0-9]+)/([0-9]+).jpg$ img.php?file=upload/items/$2_$1.jpg [L,QSA]
+	RewriteRule ^big_image/([0-9]+)/([0-9]+).jpg$ img.php?file=upload/items/$1_$2.jpg&width=1000 [L,QSA]
+	RewriteRule ^square_thumb/([0-9]+)/([0-9]+).jpg$ img.php?file=upload/items/$1_$2.jpg&width=100&fixed_asp=1 [L,QSA]
    

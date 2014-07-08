@@ -19,6 +19,7 @@
 				<? } ?>
 				
 			</div>
+			<br clear="all">
 		</div>
-		<br clear="all">
+		
 	</div>

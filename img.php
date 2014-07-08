@@ -76,8 +76,10 @@
 
 	imagecopyresampled($image_dest, $image_src, 0, 0, 0, 0, $new_width, $new_height, $src_width, $src_height);
 	// если картинка большая то добавляем копирайты
-	if ($new_width>300 && $new_height>200) {
-		imagettftext($image_dest,12,0,$new_width-140,$new_height-10,0,"inc/fonts/nfuturis.ttf","VehicleTraders.co.za");
+	if ($new_width>400 && $new_height>400) {
+		//imagettftext($image_dest,12,0,$new_width-140,$new_height-10,0,"inc/fonts/nfuturis.ttf","VehicleTraders.co.za");
+		$logo_image = ImageCreateFromPNG("img/watermark.png");
+		imagecopy($image_dest, $logo_image, $new_width-290, $new_height-70, 0, 0, 270, 56);
 	}
 	
 	// делаем картинку ЧБ

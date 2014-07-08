@@ -9,6 +9,7 @@
 			.($category>0 ? "and items.category_id='$category'" : '')
 			.($category_base>0 ? "and categories.parent_id='$category_base'" : '')
 			. " order by items.id desc"
+			.($category==0 && $category_base==0 ? " limit 18" : '')
 		) or die(mysql_error());
 		while ($row=$db->fetch($res)) {
 			$tpl[content] .= "
@@ -30,8 +31,8 @@
 		
 		$tpl[item] = $row;
 		$tpl[add_button] = ($cbasket->getItem($row[id])!==false ? "<a class='add' href='/cart'>Товар в корзине</a>" : "<a class='add_to_basket add' data-id='$row[id]'><i class='fa fa-shopping-cart fa-2x'></i> Добавить в корзину</a>");
-		$tpl[img_previews] .= "<a href='/upload/items/$row[id]_1.jpg' class='bigImage' rel='gallery'><img src='/img.php?file=upload/items/$row[id]_1.jpg&width=360'/></a>";
-		for ($i=2; $i<=10; $i++) if (file_exists("upload/items/$row[id]_$i.jpg")) $tpl[img_previews] .= "<a href='/upload/items/$row[id]_$i.jpg' class='smallImage' rel='gallery'><img src='/img.php?file=upload/items/$row[id]_$i.jpg&width=100&fixed_asp=1' width=100 height=100 /></a>";
+		$tpl[img_previews] .= "<a href='/big_image/$row[id]/1.jpg' class='bigImage' rel='gallery'><img src='/img.php?file=upload/items/$row[id]_1.jpg&width=360'/></a>";
+		for ($i=2; $i<=20; $i++) if (file_exists("upload/items/$row[id]_$i.jpg")) $tpl[img_previews] .= "<a href='/big_image/$row[id]/$i.jpg' class='smallImage' rel='gallery'><img src='/square_thumb/$row[id]/$i.jpg' width=100 height=100 /></a>";
 		$tpl[title] = "$row[name]";
 		$tpl[description] = $row[description];
 		$row[variants] = explode("\n",trim($row[variants]));

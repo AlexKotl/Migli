@@ -7,8 +7,8 @@
 			$url = "/details/$url-$data[id].html";
 		}
 		elseif ($type=='category') {
-			$url = "/store/".translit($data[name])."-$data[id]";
-			if ($data[parent_id]>0) $url .= "/".translit($data[parent_name])."-$data[parent_id]";
+			$url = "/store/".preg_replace('/[^A-Za-z0-9_\-]/', '', translit($data[name]))."-$data[id]";
+			if ($data[parent_id]>0) $url .= "/".preg_replace('/[^A-Za-z0-9_\-]/', '', translit($data[parent_name]))."-$data[parent_id]";
 		}
 		return $url;
 	}
@@ -40,4 +40,5 @@
 		include "tpl/$file";
 		return ob_get_clean();
 	}
+	
 ?>
