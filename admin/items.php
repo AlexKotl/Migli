@@ -38,6 +38,7 @@
 			$sys_message = "Товар удален в корзину";
 		}
 		
+		
 		// ADD ITEM
 		if ($_GET[action]=='write') {
 			if ($id==0) {
@@ -77,10 +78,21 @@
 				unlink("../upload/items/$id"."_$_REQUEST[del_pic].jpg");
 				$sys_message .= "Картинка удалена";
 			}
+			if ($_GET[make_main]!='') {
+				$path = '../upload/items/'.$_GET[id].'_';
+				$num = (int)$_GET[make_main];
+				@rename("{$path}1.jpg", "{$path}1tmp.jpg");
+				@rename("{$path}{$num}.jpg", "{$path}1.jpg");
+				@rename("{$path}1tmp.jpg", "{$path}{$num}.jpg");
+				$sys_message = "Порядок картинок изменен";
+			}
 			if ($id>0) $row = $db->get_row("select * from items where id='$id'");
 			
 			for ($i=1; $i<=12; $i++) if (file_exists("../upload/items/$id"."_$i.jpg")) 
-				$gallery .= "<img src='/img.php?file=upload/items/$row[id]_$i.jpg&width=100'> <a href='?module=$module&action=$_REQUEST[action]&del_pic=$i&id=$id'>[Удалить]</a><p>";
+				$gallery .= "<img src='/img.php?file=upload/items/$row[id]_$i.jpg&width=100'> 
+					<a href='?module=$module&action=$_REQUEST[action]&del_pic=$i&id=$id'>[Удалить]</a> 
+					<a href='?module=$module&action=$_REQUEST[action]&make_main=$i&id=$id'>[Сделать главной]</a>
+					<p>";
 			
 			$content .= "
 			
