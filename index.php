@@ -1,10 +1,14 @@
 <?
-	if ($_SERVER['SERVER_NAME']!='migli' && $_SERVER['REMOTE_ADDR']!='176.36.26.114') die;
+	//if ($_SERVER['SERVER_NAME']!='migli' && $_SERVER['REMOTE_ADDR']!='176.36.26.114') die;
+	session_start();
+	if (isset($_GET[horoshka])) $_SESSION[access] = true;
+	if (!$_SESSION[access]) die;
 	
 	ini_set('display_errors',1);
 	error_reporting(E_ALL && ~E_NOTICE);
 	include "classes/class_mysql.php";
 	include "classes/class_basket.php";
+	include "classes/class_comments.php";
 	include "admin/functions.php";
 	$db = new CMysql();
 	$cbasket = new CBasket();
@@ -52,5 +56,6 @@
 	if ($module=='') $module = 'items';
 	
 	include "{$module}.php";
+	include "seo.php";
 	include 'tpl/main.tpl';
 ?>

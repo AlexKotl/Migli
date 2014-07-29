@@ -5,7 +5,7 @@
 	
 	RewriteEngine   on
 	
-	RewriteRule ^details/(.*)-([0-9]+).html$ index.php?module=items&id=$2 [L]
+	RewriteRule ^details/(.*)-([0-9]+).html$ index.php?module=items&id=$2 [L,QSA]
 	RewriteRule ^store/(.*)-([0-9]+)/(.*)-([0-9]+)$ index.php?module=items&category=$4 [L]
 	RewriteRule ^store/(.*)-([0-9]+)$ index.php?module=items&category_base=$2 [L]
 	RewriteRule ^cart$ index.php?module=basket [L,QSA]
@@ -13,6 +13,6 @@
 	
 	RewriteRule ^images/([0-9]+).jpg$ img.php?file=upload/items/$1_1.jpg [L,QSA]
 	RewriteRule ^images/([0-9]+)/([0-9]+).jpg$ img.php?file=upload/items/$2_$1.jpg [L,QSA]
-	RewriteRule ^big_image/([0-9]+)/([0-9]+).jpg$ img.php?file=upload/items/$1_$2.jpg&width=1000 [L,QSA]
+	RewriteRule ^big_image/([0-9]+)/([0-9]+)/(.*).jpg$ img.php?file=upload/items/$1_$2.jpg&width=1000 [L,QSA]
 	RewriteRule ^square_thumb/([0-9]+)/([0-9]+).jpg$ img.php?file=upload/items/$1_$2.jpg&width=100&fixed_asp=1 [L,QSA]
    

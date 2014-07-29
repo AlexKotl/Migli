@@ -1,7 +1,7 @@
 <?
 	if ($_REQUEST[action]=='order') {
 		if ($_REQUEST[phone]=='' || $_REQUEST[name]=='' || $_REQUEST[email]=='') {
-			$tpl[content] = "<br><br><div class='sys_message error'>Заказ не оформлен. Заполните форму для успешного оформления заказа</div><p>";
+			$tpl[sys_message] = "Заказ не оформлен. Заполните форму для успешного оформления заказа <!-- error -->";
 		}
 		elseif ($_REQUEST[name_confirm]!='') mail('slicer256@gmail.com','Migli spam block','Spam blocked.');
 		else {
@@ -62,6 +62,6 @@
 	$tpl[content] = get_tpl('basket.tpl');
 	
 	if (isset($_REQUEST[done])) {
-		$tpl[content] = "<br><br><div class='sys_message'>Спасибо. Ваш заказ размещен</div><p>";
+		$tpl[sys_message] = "Спасибо. Ваш заказ размещен";
 	}
 ?>

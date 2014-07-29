@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Figli-Migli</title>
+	<title><?= $tpl[site_title] ?></title>
 
 	<link href="/css/style.less" rel="stylesheet/less">
 	<link href="/css/jquery.fancybox.css" rel="stylesheet">
@@ -36,8 +36,9 @@
 		</div></a>
 		<div class='contacts'>
 			<i class="fa fa-phone fa-lg"></i> <b>Телефоны:</b>
-			<br>(093) 686-2828
-			<br>(067) 587-1111
+			<br>(093) 231 25 31 
+			<br>(093) 673 94 83 
+			<br>(066) 847 88 57
 		</div>
 		<div class='contacts'>
 			<i class="fa fa-home fa-lg"></i> <b>Адрес:</b>
@@ -62,7 +63,9 @@
 		
 
 		<div class='content'>
-			
+			<? if ($tpl[sys_message]!='') {?>
+				<br><br><?= strpos($tpl[sys_message],'error')!==false ? "<div class='sys_message error'>" : "<div class='sys_message'>" ?> <?= $tpl[sys_message] ?></div><p>
+			<? } ?>
 			<!--
 			<div class='pagination'>
 				<a href=''>1</a>
@@ -98,6 +101,12 @@
 			<br clear="both"/>
 		</div>
 	</div>
+	
+<!-- BEGIN JIVOSITE CODE {literal} -->
+<script type='text/javascript'>
+(function(){ var widget_id = 'T8il1xXiwy';
+var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);})();</script>
+<!-- {/literal} END JIVOSITE CODE -->
 
 </body>
 </html>
