@@ -1,5 +1,6 @@
 <?
-//$sys_message = 'test';
+	$max_pictures = 30;
+
 	if ($_SESSION[access_level]==1) {
 		$id = (int)$_REQUEST[id]; 
 		$content .= "<a href='?module=$module&action=add&category_id=$_GET[category_id]' class='btn btn-primary pull-right btn-small'>Добавить новый товар</a>
@@ -10,7 +11,7 @@
 			
 			$content .= "
 				<table class='table table-striped table-hover table-bordered'>
-				<thead><tr><th>#</th><th>Картинка</th><th>Название</th><th>Цена</th><th>Акция</th><th>Доступно</th><th colspan=2></th></tr></thead><tbody>";
+				<thead><tr><th>#</th><th>Картинка</th><th style='width:40%'>Название</th><th>Цена</th><th>Акция</th><th>Доступно</th><th colspan=2></th></tr></thead><tbody>";
 				
 			
 			$res = $db->query("select * from items where category_id='$_REQUEST[category_id]' and flag=1 ");
@@ -88,7 +89,7 @@
 			}
 			if ($id>0) $row = $db->get_row("select * from items where id='$id'");
 			
-			for ($i=1; $i<=12; $i++) if (file_exists("../upload/items/$id"."_$i.jpg")) 
+			for ($i=1; $i<=$max_pictures; $i++) if (file_exists("../upload/items/$id"."_$i.jpg")) 
 				$gallery .= "<img src='/img.php?file=upload/items/$row[id]_$i.jpg&width=100'> 
 					<a href='?module=$module&action=$_REQUEST[action]&del_pic=$i&id=$id'>[Удалить]</a> 
 					<a href='?module=$module&action=$_REQUEST[action]&make_main=$i&id=$id'>[Сделать главной]</a>

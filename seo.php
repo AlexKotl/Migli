@@ -7,7 +7,10 @@
 			$title = "Купить {$row[name]}";
 		}
 		else {
-			//$title = "";
+			if (isset($_REQUEST[category])) {
+				$row_cat = $db->get_row("select * from categories where id='".(int)$_REQUEST[category]."'");
+				$title = "Figli-Migli topshop - $row_cat[name]. Купить $row_cat[name] на подарок";
+			}
 		}
 	}
 	

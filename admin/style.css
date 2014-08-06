@@ -8,6 +8,7 @@ body {background-image: url(/img/back.jpg)}
 th {background-color: #656565; color: white}
 h3 {font-size: 22px; }
 .page-header {padding:0; margin:10px 0 10px}
+td img {max-width: auto !important}
 
 .fileinput-button {
   position: relative;

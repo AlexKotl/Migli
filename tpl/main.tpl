@@ -93,10 +93,10 @@
 			<div class='social'>
 				Мы в соц сетях
 				<a class='fb' href='https://vk.com/figlimiglishop'><i class='fa fa-vk fa-2x'></i></a>
-				<a class='fb'><i class='fa fa-facebook fa-2x'></i></a>
+				<a class='fb' href='https://www.facebook.com/groups/289982164514937/'><i class='fa fa-facebook fa-2x'></i></a>
 				<a class='fb'><i class='fa fa-twitter fa-2x'></i></a>
 				<a class='fb' href='http://instagram.com/figli_migli_topshop'><i class='fa fa-instagram fa-2x'></i></a>
-				<a class='fb'><i class='fa fa-google-plus fa-2x'></i></a>
+				<a class='fb' href='https://plus.google.com/103126288156380874977/posts'><i class='fa fa-google-plus fa-2x'></i></a>
 			</div>
 			<br clear="both"/>
 		</div>
@@ -107,6 +107,15 @@
 (function(){ var widget_id = 'T8il1xXiwy';
 var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);})();</script>
 <!-- {/literal} END JIVOSITE CODE -->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-9891041-8', 'auto');
+  ga('send', 'pageview');
+</script>
 
 </body>
 </html>

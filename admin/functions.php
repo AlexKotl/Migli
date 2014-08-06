@@ -34,11 +34,27 @@
 		return strtr($str,$tr);
 	}
 	
+	function format_filename($str) {
+		$str = translit(trim($str));
+		$str = str_replace(' ','-', $str);
+		$str = preg_replace("/[^a-zA-Z0-9\-]/", '', $str);
+		return $str;
+	}
+	
 	function get_tpl($file) {
 		global $tpl;
 		ob_start();
 		include "tpl/$file";
 		return ob_get_clean();
+	}
+	
+	function mailNotification($subj,$content='') {
+		global $notifications_email;
+		if ($content=='') {
+			$content = $subj;
+			$subj = 'Some notification';
+		}
+		return mail($notifications_email, "Figli-Migli уведомление: {$subj}", $content);
 	}
 	
 ?>

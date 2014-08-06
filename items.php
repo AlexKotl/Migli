@@ -15,7 +15,7 @@
 			$tpl[content] .= "
 				<a href='".format_url('item',$row)."' class='item'>
 					<div class='header'><span>$row[name]</span></div>
-					<div class='image'><img src='/img.php?file=upload/items/$row[id]_1.jpg&width=230&fixed_asp=".(230/178)."' width=230 height=178 /></div>
+					<div class='image'><img src='/list_thumb/$row[id]/".format_filename($row[name]).".jpg' width=230 height=178 /></div>
 					<div class='footer'>
 						<div class='left'>$row[price] грн</div>
 						<div class='right'>Подробнее</div>
@@ -41,8 +41,8 @@
 		
 		$tpl[item] = $row;
 		$tpl[add_button] = ($cbasket->getItem($row[id])!==false ? "<a class='add' href='/cart'>Товар в корзине</a>" : "<a class='add_to_basket add' data-id='$row[id]'><i class='fa fa-shopping-cart fa-2x'></i> Добавить в корзину</a>");
-		$tpl[img_previews] .= "<a href='/big_image/$row[id]/1/".str_replace(' ','-',translit($row[name])).".jpg' class='bigImage' rel='gallery'><img src='/img.php?file=upload/items/$row[id]_1.jpg&width=360'/></a>";
-		for ($i=2; $i<=20; $i++) if (file_exists("upload/items/$row[id]_$i.jpg")) $tpl[img_previews] .= "<a href='/big_image/$row[id]/$i.jpg' class='smallImage' rel='gallery'><img src='/square_thumb/$row[id]/$i.jpg' width=100 height=100 /></a>";
+		$tpl[img_previews] .= "<a href='/big_image/$row[id]/1/".format_filename($row[name]).".jpg' class='bigImage' rel='gallery'><img src='/img.php?file=upload/items/$row[id]_1.jpg&width=360'/></a>";
+		for ($i=2; $i<=20; $i++) if (file_exists("upload/items/$row[id]_$i.jpg")) $tpl[img_previews] .= "<a href='/big_image/$row[id]/$i/".format_filename($row[name]).".jpg' class='smallImage' rel='gallery'><img src='/square_thumb/$row[id]/$i.jpg' width=100 height=100 /></a>";
 		$tpl[title] = "$row[name]";
 		$tpl[description] = $row[description];
 		$row[variants] = explode("\n",trim($row[variants]));
@@ -55,12 +55,19 @@
 		
 		// comments
 		$tpl[comments] = '';
-		$res_comment = $db->query("select * from comments where item_id='$row[id]' and flag=1");
+		$res_comment = $db->query("select *, (select comment from comments where cc.id=parent_id limit 1) as reply_text from comments cc where parent_id=0 and item_id='$row[id]' and flag=1");
 		while ($row_comment=$db->fetch($res_comment)) {
 			$row_comment[comment] = str_replace("\n", '<br>', $row_comment[comment]);
+			$row_comment[reply_text] = str_replace("\n", '<br>', $row_comment[reply_text]);
+			$nickname = $row_comment[name];
 			$tpl[comments] .= "<div class='comment'>
-				<div class='header'>$row_comment[name] <div class='date'>".date('d.m.Y',$row_comment[timestamp])."</div></div>
+				<div class='header'><div class='avatara a".CComments::stringToNumber($nickname,24)." c".CComments::stringToNumber($nickname,9)."'></div> ".$nickname." <div class='date'>".date('d.m.Y',$row_comment[timestamp])."</div></div>
 				<div class='content'>$row_comment[comment]</div>
+				</div>";
+			if ($row_comment[reply_text]!='') $tpl[comments] .= "
+				<div class='comment reply'>
+					<div class='header'><div class='avatara a".CComments::stringToNumber('admin',24)." c".CComments::stringToNumber('admin',9)."'></div> Figli-Migli <div class='date'></div></div>
+					<div class='content'>$row_comment[reply_text]</div>
 				</div>";
 		}
 		

@@ -19,13 +19,6 @@ $(function() {
 			$('#basket_count').html(parseInt($('#basket_count').html())+1);
 		});
 	});
-	/*
-$('.delete_from_basket').click(function() {
-		$(this).parent().parent().load('/ajax/index.php?module=basket&action=delete',{
-			'id': $(this).attr('data-id'),
-		});
-	});
-*/
 	
 	$('input[name=delivery]').change(function() {
 		$('.delivery_input').addClass('hidden');
@@ -46,6 +39,11 @@ $('.delete_from_basket').click(function() {
 			interval: 4000,
 			auto: true
 		}
+	});
+	
+	$('#comment_input').keyup(function() {
+		console.log($(this).val().length);
+		if ($(this).val().length>15) $('.commentAdd').show(500);
 	});
 	
 	if ($.cookie("currentColor")!=undefined) less.modifyVars({ accent_color : $.cookie("currentColor") });

@@ -3,7 +3,7 @@ class CBasket {
 	private $items = array();
 	
 	function __construct() {
-		$this->items = unserialize($_COOKIE[cbasket_items]);
+		if ($_COOKIE[cbasket_items]!='') $this->items = unserialize($_COOKIE[cbasket_items]);
 	}
 	
 	public function save() {
