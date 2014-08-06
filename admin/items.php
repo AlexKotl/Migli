@@ -19,7 +19,7 @@
 				$content .= "<tr>
 					<td>$row[id]</td>
 					<td><img src='/img.php?file=upload/items/$row[id]_1.jpg&width=50'></td>
-				    <td>$row[name]</td>
+				    <td><a href='/?id=$row[id]'>$row[name]</a></td>
 				    <td>$row[price] грн</td>
 				    <td>".($row[price_promo]>0 ? "$row[price_promo] грн" : '')."</td>
 				    <td>$row[stock_count]</td>
@@ -42,10 +42,11 @@
 		
 		// ADD ITEM
 		if ($_GET[action]=='write') {
+			$hide_watermark = ','.implode(',',array_keys($_REQUEST[hide_watermark])).',';
 			if ($id==0) {
 				if ($_REQUEST[name]=='') die('Enter name');
 				$db->insert('items', array(
-					'name', 'stock', 'description', 'stock_count', 'variants', 'category_id' => $_REQUEST[category_id], 'price', 'price_promo', 'flag' => 1
+					'name', 'stock', 'description', 'stock_count', 'variants', 'category_id' => $_REQUEST[category_id], 'price', 'price_promo', 'flag' => 1, 'hide_watermark' => $hide_watermark,
 				)) or die(mysql_error());
 				$id = $db->last_insert_id('items');
 									
@@ -53,7 +54,7 @@
 			}
 			else {
 				$db->update('items', $id, array(
-					'name', 'stock', 'description', 'variants', 'stock_count', 'price', 'price_promo'
+					'name', 'stock', 'description', 'variants', 'stock_count', 'price', 'price_promo', 'hide_watermark' => $hide_watermark,
 				)) or die(mysql_error());
 				
 				// fix first image
@@ -93,6 +94,7 @@
 				$gallery .= "<img src='/img.php?file=upload/items/$row[id]_$i.jpg&width=100'> 
 					<a href='?module=$module&action=$_REQUEST[action]&del_pic=$i&id=$id'>[Удалить]</a> 
 					<a href='?module=$module&action=$_REQUEST[action]&make_main=$i&id=$id'>[Сделать главной]</a>
+					<label style='margin-left:30px; display:inline'><input type='checkbox' name='hide_watermark[$i]' ".(strpos($row[hide_watermark],",{$i},")!==false ? 'checked' : '')."> Не накладывать лого</label>
 					<p>";
 			
 			$content .= "
