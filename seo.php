@@ -1,6 +1,6 @@
 <?
 	$title = 'Figli-Migli topshop';
-	$description = '';
+	$description = 'Интернет магазин приятных подарков для девушек';
 	
 	if ($module=='items') {
 		if ($id>0) {
@@ -15,5 +15,5 @@
 	}
 	
 	$tpl[site_title] = $title;
-	$tpl[description] = $description;
+	$tpl[site_description] = $description;
 ?>

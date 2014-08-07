@@ -2,7 +2,8 @@
 <html>
 <head>
 	<title><?= $tpl[site_title] ?></title>
-
+	
+	<meta name='description' content="<?= $tpl[site_description] ?>">
 	<link href="/css/style.less" rel="stylesheet/less">
 	<link href="/css/jquery.fancybox.css" rel="stylesheet">
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
