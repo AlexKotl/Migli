@@ -39,6 +39,10 @@
 		
 		$row = $db->get_row("select * from items where id='$id'");
 		
+		if ($row[flag]!=1) header('location: /',true);
+		
+		$db->query("update items set views=views+1 where id='$id'");
+		
 		$tpl[item] = $row;
 		$tpl[add_button] = ($cbasket->getItem($row[id])!==false ? "<a class='add' href='/cart'>Товар в корзине</a>" : "<a class='add_to_basket add' data-id='$row[id]'><i class='fa fa-shopping-cart fa-2x'></i> Добавить в корзину</a>");		
 		$tpl[img_previews] .= "<a href='/big_image/$row[id]/".(strpos($row[hide_watermark],",1,")!==false ? '0' : '')."1/".format_filename($row[name]).".jpg' class='bigImage' rel='gallery'>
@@ -72,6 +76,21 @@
 					<div class='header'><div class='avatara a".CComments::stringToNumber('admin',24)." c".CComments::stringToNumber('admin',9)."'></div> Figli-Migli <div class='date'></div></div>
 					<div class='content'>$row_comment[reply_text]</div>
 				</div>";
+		}
+		
+		// SIMILAR
+		$res_similar = $db->query("SELECT * FROM `items` WHERE category_id='$row[category_id]' and id!='$row[id]' order by abs($row[price]-price) limit 3");
+		while ($row_similar=$db->fetch($res_similar)) {
+			$tpl[similar] .= "
+				<a href='".format_url('item',$row_similar)."' class='item'>
+					<div class='header'><span>$row_similar[name]</span></div>
+					<div class='image'><img src='/list_thumb/$row_similar[id]/".format_filename($row_similar[name]).".jpg' width=230 height=178 /></div>
+					<div class='footer'>
+						<div class='left'>$row_similar[price] грн</div>
+						<div class='right'>Подробнее</div>
+					</div>
+				</a>
+				";
 		}
 		
 		$tpl[content] = get_tpl("items_details.tpl");

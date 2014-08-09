@@ -31,6 +31,12 @@
 	<div class='images'>
 		<?= $tpl[img_previews] ?>
 	</div>
+	
+	<br clear="both">
+	<h4 style='margin-top:100px'>Вас может заинтересовать</h4>
+	<div class='similar itemsList'>
+		<?= $tpl[similar] ?>
+	</div>
 		
 	
 	<script type="text/javascript">
