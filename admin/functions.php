@@ -57,4 +57,13 @@
 		return mail($notifications_email, "Figli-Migli уведомление: {$subj}", $content);
 	}
 	
+	function add_log($type, $description='') {
+		if ($description=='') $description = $type;
+		CMysql::insert('log', array(
+			'type' => $type,
+			'description' => $description,
+			'ip' => $_SERVER[REMOTE_ADDR],			
+		));
+	}
+	
 ?>

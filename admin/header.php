@@ -51,7 +51,7 @@
 				<li><a href="?module=categories"><i class="icon-tasks"></i> Редактор категорий</a></li>
 				<? 
 				$count = $db->get_row("select count(*) from orders where status=2");
-				$count_comments = $db->get_row("select count(*) from comments where flag=0");
+				$count_comments = $db->get_row("select count(*) from comments where flag=0 and parent_id=0");
 				echo "<li><a href='?module=comments'><i class='icon-shopping-cart'></i> Комментарии <span class='badge badge-important pull-right'>".($count_comments>0 ? $count_comments : '')."</span></a></li>";
 				echo "<li><a href='?module=orders'><i class='icon-list-alt'></i> Список заказов <span class='badge badge-important pull-right'>".($count>0 ? $count : '')."</span></a></li>";
 				echo "<li><a href='?module=subscribers'><i class='icon-envelope'></i> Подписчики <span class='badge badge-important pull-right'></span></a></li>" 

@@ -12,4 +12,6 @@
 				<br/><input type='submit' name='submit_but' value='Подписаться'>
 			</div>
 			</form>
+			
+			<img src='/img/visa.jpg' style='margin:50px '>
 		</div>		

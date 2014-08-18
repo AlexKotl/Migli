@@ -9,6 +9,7 @@
 		));
 		$cbasket->save();
 		echo "<i class='fa fa-smile-o fa-4x'></i>";
+		add_log('basket', "Item (ID:$_REQUEST[id]) added to cart");
 	}
 	
 	if ($_REQUEST[action]=='delete') {

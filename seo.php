@@ -4,8 +4,9 @@
 	
 	if ($module=='items') {
 		if ($id>0) {
-			$title = "Купить {$row[name]} - {$row[description]}";
-			$description = "{$row[description]} Магазин приятных подарков Figli-Migli";
+			$title = "{$row[name]} - описание, цена, отзывы. Купить за {$row[price]} грн";
+			if (strlen($row[description])<120) $title .= " - {$row[description]}";
+			$description = "{$row[description]} Магазин приятных подарков Figli-Migli.";
 		}
 		else {
 			if (isset($_REQUEST[category])) {

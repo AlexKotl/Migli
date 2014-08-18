@@ -28,6 +28,9 @@
 			$cbasket->clearBasket();
 			$cbasket->save();
 			
+			mailNotification('Оформлен новый заказ',"$description");
+			add_log('basket', "Order submitted");					
+			
 			header("location: /cart?done");
 		}
 	}
