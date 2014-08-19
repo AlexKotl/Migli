@@ -12,6 +12,7 @@
 				'flag' => 1,
 			)) or die(mysql_error());
 			$tpl[content] = "<br><br><div class='sys_message'>Подписка оформлена</div><p>";
+			add_log('subscribe',"New subscriber added {$email}");
 		}
 		
 	}

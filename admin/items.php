@@ -37,6 +37,7 @@
 		if ($_GET[action]=='delete') {
 			$db->query("update items set flag=0 where id='$id'");
 			$sys_message = "Товар удален в корзину";
+			add_log('items',"Item removed to bin (ID:{$id})");
 		}
 		
 		
@@ -51,6 +52,7 @@
 				$id = $db->last_insert_id('items');
 									
 				$sys_message = 'Товар добавлен';
+				add_log('items',"Item added (ID:{$id})");
 			}
 			else {
 				$db->update('items', $id, array(
@@ -64,6 +66,7 @@
 					if ($n<=11) rename("../upload/items/$id"."_$n.jpg", "../upload/items/$id"."_1.jpg");
 				}
 				$sys_message = 'Изменения внесены';
+				add_log('items',"Item updated (ID:{$id})");
 			}
 			$i = 0;
 			foreach (explode('|',$_POST[files_added]) as $f) {
