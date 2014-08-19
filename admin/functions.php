@@ -7,8 +7,9 @@
 			$url = "/details/$url-$data[id].html";
 		}
 		elseif ($type=='category') {
-			$url = "/store/".preg_replace('/[^A-Za-z0-9_\-]/', '', translit($data[name]))."-$data[id]";
+			$url = "/store";
 			if ($data[parent_id]>0) $url .= "/".preg_replace('/[^A-Za-z0-9_\-]/', '', translit($data[parent_name]))."-$data[parent_id]";
+			$url .= '/'.preg_replace('/[^A-Za-z0-9_\-]/', '', translit($data[name]))."-$data[id]";
 		}
 		return $url;
 	}

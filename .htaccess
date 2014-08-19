@@ -8,6 +8,8 @@
 	RewriteCond %{HTTP_HOST} ^www.figli-migli.net$ [NC]
 	RewriteRule ^(.*)$ http://figli-migli.net/$1 [R=301,L]
 	
+	RewriteRule ^sitemap.xml$ sitemap.php [L]
+	
 	RewriteRule ^details/(.*)-([0-9]+).html$ index.php?module=items&id=$2 [L,QSA]
 	RewriteRule ^store/(.*)-([0-9]+)/(.*)-([0-9]+)$ index.php?module=items&category=$4 [L]
 	RewriteRule ^store/(.*)-([0-9]+)$ index.php?module=items&category_base=$2 [L]
