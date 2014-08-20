@@ -8,6 +8,7 @@ a {color:#10388f; text-decoration: none; cursor: pointer}
 a:hover {text-decoration: none}
 .colored {color:#c23b8e}
 .mainContent {width:910px; margin:auto; background-color: white; padding: 20px 20px 100px 20px; }
+.clearBoth {clear:both;}
 
 .sys_message {background-color: #c8f1c4; border-radius: 5px; padding:10px 20px; font:normal 14px Arial}
 .sys_message.error {background-color: #f2dcdc}
@@ -44,7 +45,7 @@ table.simpleTable {width: 100%; border-collapse:collapse; }
 .topMenu {
 	width:100%; background-color: @accent_color; height: 45px;
 	ul {
-		margin:auto; width: @site_width; color:white; text-align: center;
+		margin:auto; width: @site_width + 30; color:white; text-align: center;
 		li {display: inline-block;}
 		li a {line-height: 45px; height:45px; display: inline-block; font-size:10.5pt; color:white; width:auto; padding:0 8px;}
 		li a:hover {background-color: lighten(@accent_color,5%)}

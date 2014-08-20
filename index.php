@@ -20,7 +20,7 @@
 		where c1.parent_id=0");
 	while ($row=$db->fetch($res)) {
 		if ($cur_parent!=$row[parent_id] && $is_submenu_opened) {
-			$tpl[menu] .= "</ul>\n";
+			$tpl[menu] .= "</ul></li>\n";
 			$tpl[left_menu] .= "</ul>\n";
 			$is_submenu_opened = false;
 		}

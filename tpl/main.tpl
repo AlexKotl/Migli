@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title><?= $tpl[site_title] ?></title>
-	
+	<meta charset="utf-8">
+	<title><?= $tpl[site_title] ?></title>	
 	<meta name='description' content="<?= $tpl[site_description] ?>">
 	<link href="/css/style.less" rel="stylesheet/less">
 	<link href="/css/jquery.fancybox.css" rel="stylesheet">
@@ -15,15 +15,15 @@
 	<script src="/js/jquery.cookie.js" type="text/javascript"></script>
 	<script src="/js/common.js" type="text/javascript"></script>
 	
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600&amp;subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
 	
 </head>
 <body>
 	<div class='siteHead'>
-		<a href='/cart'><div class='basket'>
+		<div class='basket'><a href='/cart'>
 			<i class="fa fa-shopping-cart fa-lg"></i> <b>Корзина</b>
-			<br><small><?= $tpl[basket_content] ?></small>
+			<br><small><?= $tpl[basket_content] ?></small></a>
 			<br>
 			<a class='changeColor' style='background-color: #ff694c'></a>
 			<a class='changeColor' style='background-color: #964991'></a>
@@ -34,7 +34,7 @@
 			<a class='changeColor' style='background-color: #4b8e92'></a>
 			<a class='changeColor' style='background-color: #d1be40'></a>
 			<a class='changeColor' style='background-color: #4099d1'></a>
-		</div></a>
+		</div>
 		<div class='contacts'>
 			<i class="fa fa-phone fa-lg"></i> <b>Телефоны:</b>
 			<!-- <br>(093) 231 25 31  -->
@@ -47,14 +47,14 @@
 			<br>пн-пт 9:00-18:00
 		</div>		
 		<a href='/'><div class='siteLogo'><b>Figli-Migli</b> <span>TOPSHOP</span></div></a>
-		<br clear="all">
+		<br class='clearBoth'>
 		
 	</div>
 	
 	<div class="topMenu">
 		<ul>
 			<li><a href='/'>Новинки</a></li>
-			<?= $tpl[menu] ?>
+			<?= $tpl[menu] ?> </ul>
 		</ul>
 	</div>
 	
@@ -87,7 +87,7 @@
 		
 	</div>
 	
-	<br clear="all">
+	<br class='clearBoth'>
 	<div class="siteFooter">
 		<div class='content'>
 			<div class='copy'>Copyright &copy; <?= date('Y') ?> FIGLI-MIGLI TOPSHOP </div>
@@ -99,7 +99,7 @@
 				<a class='fb' href='http://instagram.com/figli_migli_topshop'><i class='fa fa-instagram fa-2x'></i></a>
 				<a class='fb' href='https://plus.google.com/103126288156380874977/posts'><i class='fa fa-google-plus fa-2x'></i></a>
 			</div>
-			<br clear="both"/>
+			<br class='clearBoth'/>
 		</div>
 	</div>
 	

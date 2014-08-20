@@ -57,11 +57,11 @@
 		
 		$tpl[item] = $row;
 		$tpl[add_button] = ($cbasket->getItem($row[id])!==false ? "<a class='add' href='/cart'>Товар в корзине</a>" : "<a class='add_to_basket add' data-id='$row[id]'><i class='fa fa-shopping-cart fa-2x'></i> Добавить в корзину</a>");		
-		$tpl[img_previews] .= "<a href='/big_image/$row[id]/".(strpos($row[hide_watermark],",1,")!==false ? '0' : '')."1/".format_filename($row[name]).".jpg' class='bigImage' rel='gallery' alt='$row[name]'>
-			<img src='/medium_image/$row[id]/1/".format_filename($row[name]).".jpg'/></a>";
+		$tpl[img_previews] .= "<a href='/big_image/$row[id]/".(strpos($row[hide_watermark],",1,")!==false ? '0' : '')."1/".format_filename($row[name]).".jpg' class='bigImage'>
+			<img src='/medium_image/$row[id]/1/".format_filename($row[name]).".jpg' alt='$row[name] на фото'/></a>";
 		for ($i=2; $i<=20; $i++) if (file_exists("upload/items/$row[id]_$i.jpg")) 
-			$tpl[img_previews] .= "<a href='/big_image/$row[id]/".(strpos($row[hide_watermark],",{$i},")!==false ? '0' : '')."$i/".format_filename($row[name]).".jpg' class='smallImage' rel='gallery'>
-				<img src='/square_thumb/$row[id]/$i.jpg' width=100 height=100 /></a>";
+			$tpl[img_previews] .= "<a href='/big_image/$row[id]/".(strpos($row[hide_watermark],",{$i},")!==false ? '0' : '')."$i/".format_filename($row[name]).".jpg' class='smallImage'>
+				<img src='/square_thumb/$row[id]/$i.jpg' width='100' height='100' alt='$row[name] на фото $i'/></a>";
 		$tpl[title] = "$row[name]";
 		$tpl[description] = $row[description];
 		$row[variants] = explode("\n",trim($row[variants]));
@@ -102,7 +102,7 @@
 			$tpl[similar] .= "
 				<a href='".format_url('item',$row_similar)."' class='item'>
 					<div class='header'><span>$row_similar[name]</span></div>
-					<div class='image'><img src='/list_thumb/$row_similar[id]/".format_filename($row_similar[name]).".jpg' width=230 height=178  /></div>
+					<div class='image'><img src='/list_thumb/$row_similar[id]/".format_filename($row_similar[name]).".jpg' width=230 height=178 alt='{$row_similar[name]} фото' /></div>
 					<div class='footer'>
 						<div class='left'>$row_similar[price] грн</div>
 						<div class='right'>Подробнее</div>

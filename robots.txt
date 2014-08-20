@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+Host: figli-migli.net
+Sitemap: http://figli-migli.net/sitemap.xml

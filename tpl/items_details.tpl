@@ -5,18 +5,18 @@
 		<?= $tpl[description] ?>
 		
 		<?= $tpl[variants] ?>		
-		<br clear='both'>
+		<br class='clearBoth'>
 		<div class='price'>
 			Цена: <b><?= $tpl[item][price] ?></b> грн
 		</div>
 		<?= $tpl[add_button] ?>
 		
-		<br clear='both'>
+		<br class='clearBoth'>
 		
 		<h4>Комментарии:</h4>
 		<div class='commentsBlock'>
 			<?= $tpl[comments] ?>
-			<form action='' method='post'>
+			<form action='#' method='post'>
 				<input type="hidden" name='item_id' value='<?= $tpl[item][id]?>'>
 				<textarea name='comment' id='comment_input' placeholder='Введите ваш комментарий'></textarea> <br>
 				<div class='commentAdd' style='display:none'>
@@ -32,7 +32,7 @@
 		<?= $tpl[img_previews] ?>
 	</div>
 	
-	<br clear="both">
+	<br class='clearBoth'>
 	<h4 style='margin-top:100px'>Вас может заинтересовать</h4>
 	<div class='similar itemsList'>
 		<?= $tpl[similar] ?>
@@ -41,7 +41,7 @@
 	
 	<script type="text/javascript">
 		$(function() {
-			$(".images a").fancybox();
+			$(".images a").attr('rel','gallery').fancybox();
 		})
 	</script>
 </div>

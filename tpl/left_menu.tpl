@@ -1,7 +1,7 @@
 		<div class='leftMenu'>
 			<h3>Категории</h3>
 			<ul>
-				<?= $tpl[left_menu] ?>
+				<?= $tpl[left_menu] ?> </ul>
 			</ul>
 			
 			<form class='subscribe' action='/subscribe' method='post'>
@@ -13,5 +13,5 @@
 			</div>
 			</form>
 			
-			<img src='/img/visa.jpg' style='margin:50px '>
+			<img src='/img/visa.jpg' style='margin:50px' alt=''>
 		</div>		

@@ -4,9 +4,9 @@
 				<!-- <img src='/img/stuff/slider.jpg'> -->
 				
 				<div id="slides">
-					<img src="/img/slider/1.jpg">
-					<img src="/img/slider/2.jpg">
-					<img src="/img/slider/3.jpg">
+					<img src="/img/slider/1.jpg" alt=''>
+					<img src="/img/slider/2.jpg" alt=''>
+					<img src="/img/slider/3.jpg" alt=''>
 				</div>
 				
 			</div>
@@ -19,7 +19,7 @@
 				<? } ?>
 				
 			</div>
-			<br clear="all">
+			<br class='clearBoth'>
 		</div>
 		
 	</div>

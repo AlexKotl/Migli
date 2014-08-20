@@ -7,7 +7,7 @@
 	include "admin/functions.php";
 	$db = new CMysql();
 
-	$urls = array('');
+	$urls = array('/');
 	$site_url = "http://figli-migli.net";
 	
 	$res = $db->query("select *, (select name from categories where cc.parent_id=id) as parent_name from categories as cc where flag=1");
