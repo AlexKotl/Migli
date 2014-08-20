@@ -51,6 +51,17 @@ table.simpleTable {width: 100%; border-collapse:collapse; }
 	}
 }
 
+.navigationBar {
+	background-color: #F9F9F9; box-shadow: inset 0px 0px 5px #e1e1e1;
+	.content {
+		margin:auto; width: @site_width - 10; padding:7px 0; font-size: 8.8pt; 
+		a {color:#888888;}		
+		a:hover {text-decoration: underline; color:#333333}
+		a:before {content: " » " ;  display: inline-block; margin:0 5px}
+		a:nth-child(1):before {content: ""}
+	}
+}
+
 .sliderBlock {
 	background: #faf8f4  url(/img/back.jpg) repeat; 
 	box-shadow: inset 5px 0px 7px #c1c1c1;

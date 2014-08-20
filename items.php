@@ -24,6 +24,17 @@
 				";
 		}
 		$tpl[content] .= "</div>";
+		
+		if ($category_base>0) {
+			$row_cat = $db->get_row("select * from categories where id='$category_base'");
+			$navigation_bar .= "<a href='".format_url('category',$row_cat)."'>$row_cat[name]</a> ";
+		}
+		if ($category>0) {
+			$row_cat = $db->get_row("select *, (select name from categories where id=cc.parent_id) as parent_name from categories as cc where id='$category'");
+			$navigation_bar .= "<a href='".format_url('category',$row_cat)."'>$row_cat[name]</a> ";
+		}
+		
+		
 	}
 	
 	else {
@@ -61,7 +72,7 @@
 			$tpl[variants] = "<h4>Вариант</h4> <select name='variant' id='variant'>$tpl[variants]</select>";
 		}
 		
-		// comments
+		// COMMENTS
 		$tpl[comments] = '';
 		$res_comment = $db->query("select *, (select comment from comments where cc.id=parent_id limit 1) as reply_text from comments cc where parent_id=0 and item_id='$row[id]' and flag=1");
 		while ($row_comment=$db->fetch($res_comment)) {
@@ -78,6 +89,12 @@
 					<div class='content'>$row_comment[reply_text]</div>
 				</div>";
 		}
+		
+		// NAVIGATION BAR
+		$row_cat = $db->get_row("select *, (select name from categories where id=cc.parent_id) as parent_name from categories as cc where id='$row[category_id]'");
+		$navigation_bar .= "<a href='".format_url('category',array('name'=>$row_cat[parent_name], 'id'=>$row_cat[parent_id]))."'>$row_cat[parent_name]</a> ";
+		$navigation_bar .= "<a href='".format_url('category',$row_cat)."'>$row_cat[name]</a> ";
+		$navigation_bar .= "<a href=''>$row[name]</a> ";
 		
 		// SIMILAR
 		$res_similar = $db->query("SELECT * FROM `items` WHERE category_id='$row[category_id]' and id!='$row[id]' and flag=1 order by abs($row[price]-price) limit 3");
@@ -102,7 +119,6 @@
 	if ($_SERVER[REQUEST_URI]=='/') {
 		$tpl[header_add] = get_tpl("header_slider.tpl");		
 	}
-	//else 
-	//$tpl[left_menu] = get_tpl("left_menu.tpl");
+	else $tpl[header_add] = "<div class='navigationBar'><div class='content'><a href='/'>Главная</a> $navigation_bar</div></div>";
 
 ?>
