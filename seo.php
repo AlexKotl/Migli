@@ -1,6 +1,7 @@
 <?
 	$title = 'Figli-Migli - подарки и весна всегда!';
 	$description = 'Интернет магазин приятных подарков для девушек, приятные мелочи';
+	$keywords = 'подарки, мелочи, девушкам, подарки для девушек, магазин, купить, для дома, очки, часы, украшения, серьги, браслеты, аксессуары, колготки с рисунком, шарфы, бабочки, канцелярия, стикеры, блокноты, чехол для телефона, органайзеры';
 	
 	if ($module=='items') {
 		if ($id>0) {
@@ -16,7 +17,13 @@
 			}
 		}
 	}
+
+	$row_seo = $db->get_row("select * from seo where url='".$_SERVER[REQUEST_URI]."'");
+	if (trim($row_seo[title])!='') $title = $row_seo[title];
+	if (trim($row_seo[description])!='') $description = $row_seo[description];
+	if (trim($row_seo[keywords])!='') $keywords = $row_seo[keywords];
 	
 	$tpl[site_title] = $title;
 	$tpl[site_description] = $description;
+	$tpl[site_keywords] = $keywords;
 ?>
