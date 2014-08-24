@@ -5,9 +5,9 @@
 	
 	if ($module=='items') {
 		if ($id>0) {
-			$title = "{$row[name]} - описание, цена, отзывы. Купить за {$row[price]} грн";
+			$title = "{$row[name]} - описание, цена, отзывы. Купить в Киеве за {$row[price]} грн";
 			if (strlen($row[description])<120) $title .= " - {$row[description]}";
-			$description = "{$row[description]} Магазин приятных подарков Figli-Migli.";
+			$description = "{$row[description]} Магазин приятных подарков Figli-Migli. Доставка по Украине.";
 		}
 		else {
 			if (isset($_REQUEST[category])) {

@@ -18,7 +18,7 @@
 					<div class='image'><img src='/list_thumb/$row[id]/".format_filename($row[name]).".jpg' width=230 height=178  alt='Купить $row[name]' /></div>
 					<div class='footer'>
 						<div class='left'>$row[price] грн</div>
-						<div class='right'>Подробнее</div>
+						<div class='right'>Купить</div>
 					</div>
 				</a>
 				";

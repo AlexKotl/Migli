@@ -2,6 +2,12 @@
 	if ($_SESSION[access_level]==1) {
 		$id = (int)$_GET[id]; 
 		
+		$content .= "
+			<a href='?module=$module&action=&status=2' class='btn btn-warning pull-right btn-small' style='margin-left:10px'>Новые</a> 
+			<a href='?module=$module&action=&status=1' class='btn btn-success pull-right btn-small' style='margin-left:10px'>Выполненные</a>
+			<a href='?module=$module&action=&status=3' class='btn btn-danger pull-right btn-small'>Отклоненные</a>
+			<br/><br/>";
+		
 		if ($_GET[action]=='flag') {
 			$db->query("update orders set status='$_GET[flag]' where id=$id") or die(mysql_error());
 			$id = 0;
@@ -16,7 +22,7 @@
 				<thead><tr><th>#</th><th>Имя</th><th>Телефон</th><th>Адрес доставки</th><th>Стоимость</th><th>Дата</th><th></th></tr></thead><tbody>";
 				
 			
-			$res = $db->query("select * from orders where status=2");
+			$res = $db->query("select * from orders where status='{$_REQUEST[status]}'");
 			while ($row=$db->fetch($res)) {
 				$description = unserialize($row[description]);
 				if ($description[delivery]=='self') $delivery = 'Самовывоз';

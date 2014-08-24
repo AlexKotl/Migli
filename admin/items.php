@@ -11,7 +11,7 @@
 			
 			$content .= "
 				<table class='table table-striped table-hover table-bordered'>
-				<thead><tr><th>#</th><th>Картинка</th><th style='width:40%'>Название</th><th>Цена</th><th>Акция</th><th>Доступно</th><th colspan=2></th></tr></thead><tbody>";
+				<thead><tr><th>#</th><th>Картинка</th><th style='width:40%'>Название</th><th>Цена</th><th>Акция</th><th>Доступно</th><th colspan=3></th></tr></thead><tbody>";
 				
 			
 			$res = $db->query("select * from items where category_id='$_REQUEST[category_id]' and flag=1 ");
@@ -24,6 +24,8 @@
 				    <td>".($row[price_promo]>0 ? "$row[price_promo] грн" : '')."</td>
 				    <td>$row[stock_count]</td>
 				    <td>
+				    	<a href='?module=seo&action=edit&item_id=$row[id]' title='Редактировать SEO'><img src='images/basic/globe.png'></a>
+				    </td><td>
 				    	<a href='?module=$module&action=edit&id=$row[id]&category_id=$row[category_id]' title='Редактировать'><img src='images/basic/edit.png'></a>
 				    </td><td>
 				    	<a href='?module=$module&action=delete&id=$row[id]' title='Удалить' onclick=\"return confirm('Удалить?');\"><img src='images/basic/block.png'></a>

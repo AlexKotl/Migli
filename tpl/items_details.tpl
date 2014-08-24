@@ -13,7 +13,7 @@
 		
 		<br class='clearBoth'>
 		
-		<h4>Комментарии:</h4>
+		<h4>Отзывы и комментарии:</h4>
 		<div class='commentsBlock'>
 			<?= $tpl[comments] ?>
 			<form action='#' method='post'>

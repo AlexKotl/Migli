@@ -28,6 +28,7 @@ if ($_SESSION[access_level]==1) {
 				<td>$row[id]</td>
 			    <td>$row[name]</td>
 			    <td>$row[items_count]</td>
+			    <td><a href='?module=seo&category_id=$row[id]' title='SEO'><img src='images/basic/globe.png'></a></td>
 			    <td><a href='?module=$module&action=edit&id=$row[id]' title='Редактировать'><img src='images/basic/edit.png'></a></td>
 			    <td><a href='?module=$module&action=block&id=$row[id]' title='Заблокировать'><img src='images/basic/block.png'></a></td>
 			    <td><a href='?module=$module&action=add&parent_id=$row[id]' title='Добавить подгатегорию'><img src='images/basic/plus.png'></a></td>
@@ -39,6 +40,7 @@ if ($_SESSION[access_level]==1) {
 					<td>$row_sub[id]</td>
 				    <td>⇢ $row_sub[name]</td>
 				    <td>$row_sub[items_count]</td>
+				   	<td><a href='?module=seo&category_id=$row_sub[id]' title='SEO'><img src='images/basic/globe.png'></a></td>
 				    <td><a href='?module=$module&action=edit&id=$row_sub[id]' title='Редактировать'><img src='images/basic/edit.png'></a></td>
 					<td><a href='?module=$module&action=edit&id=$row_sub[id]' title='Заблокировать'><img src='images/basic/block.png'></a>				    </td>
 					<td></td>
