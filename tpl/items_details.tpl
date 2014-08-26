@@ -4,12 +4,16 @@
 		<h4>Описание:</h4>
 		<?= $tpl[description] ?>
 		
-		<?= $tpl[variants] ?>		
-		<br class='clearBoth'>
-		<div class='price'>
-			Цена: <b><?= $tpl[item][price] ?></b> грн
-		</div>
-		<?= $tpl[add_button] ?>
+		<? if ($tpl[item][flag]==1) { ?>
+			<?= $tpl[variants] ?>		
+			<br class='clearBoth'>
+			<div class='price'>
+				Цена: <b><?= $tpl[item][price] ?></b> грн
+			</div>
+			<?= $tpl[add_button] ?>
+		<? } else  { ?>
+			<div class='unavailable'>Товар временно недоступен <i class='fa fa-frown-o fa-4x'></i></div>
+		<? } ?>
 		
 		<br class='clearBoth'>
 		

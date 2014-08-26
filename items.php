@@ -5,19 +5,21 @@
 	
 	if ($id==0) {
 		$tpl[content] .= "<div class='itemsList'>";
-		$res = $db->query("select items.*, categories.parent_id from items left join categories on items.category_id=categories.id where items.flag=1 "
+		$res = $db->query("select items.*, categories.parent_id from items left join categories on items.category_id=categories.id where items.flag>0 "
 			.($category>0 ? "and items.category_id='$category'" : '')
 			.($category_base>0 ? "and categories.parent_id='$category_base'" : '')
 			. " order by items.id desc"
 			.($category==0 && $category_base==0 ? " limit 18" : '')
 		) or die(mysql_error());
 		while ($row=$db->fetch($res)) {
+			$price = "$row[price] грн";
+			if ($row[flag]==2) $price = "Нет в наличии";
 			$tpl[content] .= "
-				<a href='".format_url('item',$row)."' class='item'>
+				<a href='".format_url('item',$row)."' class='item".($row[flag]==2 ? ' unavailable' : '')."'>
 					<div class='header'><span>$row[name]</span></div>
 					<div class='image'><img src='/list_thumb/$row[id]/".format_filename($row[name]).".jpg' width=230 height=178  alt='Купить $row[name]' /></div>
 					<div class='footer'>
-						<div class='left'>$row[price] грн</div>
+						<div class='left'>$price</div>
 						<div class='right'>Купить</div>
 					</div>
 				</a>
@@ -51,7 +53,7 @@
 		
 		$row = $db->get_row("select * from items where id='$id'");
 		
-		if ($row[flag]!=1) header('location: /',true);
+		if ($row[flag]===0) header('location: /',true);
 		
 		$db->query("update items set views=views+1 where id='$id'");
 		

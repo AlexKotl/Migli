@@ -120,6 +120,7 @@ table.simpleTable {width: 100%; border-collapse:collapse; }
 			}
 			&:hover {box-shadow: 0px 0px 6px 0px #e1e1e1; }
 			&:hover .header span {color: @accent_color}
+			&.unavailable {opacity:0.8}
 		}
 		#orderSum {color: @accent_color; font-size: 1.3em;}
 		.orderText {float:right; width:200px; font-size: 0.8em; color:#4e4e4e; border:1px dashed lighten(@accent_color, 35%); border-radius: 12px; padding:10px 15px;}
@@ -133,8 +134,10 @@ table.simpleTable {width: 100%; border-collapse:collapse; }
 		float:right; width:330px;
 		.price {float:left; width:42%; height: 48px; line-height: 48px; border:1px solid black; text-align: center; font-size: 1.2em; color:#999999; border-right: 0px; margin-top:15px}
 		.price b {color:#333333; font-size: 1.4em;}
+		.unavailable {font-size: 1.4em; color: #ba1818; margin:10px 0;}
 		.add {
-			float:left; width:57%; height:48px; line-height: 48px; border:1px solid @accent_color; display: block; background-color: @accent_color; color:white; text-align: center; font-size: 1.2em; margin-top:15px;
+			float:left; width:57%; height:48px; line-height: 48px; border:1px solid @accent_color; display: block; background-color: @accent_color; 
+			color:white; text-align: center; font-size: 1.2em; margin-top:15px;
 			i {color: white;}
 			&:hover {background-color: white; color: @accent_color;}
 			&:hover i {color: @accent_color;}

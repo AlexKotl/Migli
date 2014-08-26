@@ -3,20 +3,29 @@
 
 	if ($_SESSION[access_level]==1) {
 		$id = (int)$_REQUEST[id]; 
-		$content .= "<a href='?module=$module&action=add&category_id=$_GET[category_id]' class='btn btn-primary pull-right btn-small'>Добавить новый товар</a>
+		$content .= "
+			<a href='?module=$module&action=add&category_id=$_GET[category_id]' class='btn btn-primary pull-right btn-small' style='margin-left:10px'>Добавить новый товар</a>
+			<a href='?module=$module&category_id=$_GET[category_id]&flag=2' class='btn btn-warning pull-right btn-small'>Корзина</a>
 			<div class='page-header'>  <h3>Товар</h3></div>";
 		
+		// FLAG ITEM
+		if ($_GET[action]=='flag') {
+			$db->query("update items set flag='{$_GET[val]}' where id='$id'") or die(mysql_error());
+			$sys_message = "Изменения сохранены";
+			add_log('items',"Item flagged as {$_GET[val]} (ID:{$id})");
+		}
+		
 		// LIST VIEW
-		if ($_GET[action]=='' || $_GET[action]=='write') {
+		if ($_GET[action]=='' || $_GET[action]=='write' || $_GET[action]=='flag') {
 			
 			$content .= "
 				<table class='table table-striped table-hover table-bordered'>
-				<thead><tr><th>#</th><th>Картинка</th><th style='width:40%'>Название</th><th>Цена</th><th>Акция</th><th>Доступно</th><th colspan=3></th></tr></thead><tbody>";
+				<thead><tr><th>#</th><th>Картинка</th><th style='width:40%'>Название</th><th>Цена</th><th>Акция</th><th>Доступно</th><th colspan=4></th></tr></thead><tbody>";
 				
 			
-			$res = $db->query("select * from items where category_id='$_REQUEST[category_id]' and flag=1 ");
+			$res = $db->query("select * from items where category_id='$_REQUEST[category_id]' and ".($_GET[flag]===0 ? "flag=0 " : "(flag=2 or flag=1)")) or die(mysql_error());
 			while ($row=$db->fetch($res)) {
-				$content .= "<tr>
+				$content .= "<tr ".($row[flag]==2 ? "class='error'" : '').">
 					<td>$row[id]</td>
 					<td><img src='/img.php?file=upload/items/$row[id]_1.jpg&width=50'></td>
 				    <td><a href='/?id=$row[id]'>$row[name]</a></td>
@@ -27,7 +36,11 @@
 				    	<a href='?module=seo&action=edit&item_id=$row[id]' title='Редактировать SEO'><img src='images/basic/globe.png'></a>
 				    </td><td>
 				    	<a href='?module=$module&action=edit&id=$row[id]&category_id=$row[category_id]' title='Редактировать'><img src='images/basic/edit.png'></a>
-				    </td><td>
+				    </td>
+				    <td>
+				    	<a href='?module=$module&action=flag&id=$row[id]&val=".($row[flag]==2 ? 1 : 2)."&category_id=$row[category_id]' title='".($row[flag]==2 ? "Товар появился" : "Отметить как нет в наличии")."' ><img src='images/basic/warning.png'></a>
+				    </td>
+				    <td>
 				    	<a href='?module=$module&action=delete&id=$row[id]' title='Удалить' onclick=\"return confirm('Удалить?');\"><img src='images/basic/block.png'></a>
 				    </td>
 				  </tr>";
@@ -41,7 +54,6 @@
 			$sys_message = "Товар удален в корзину";
 			add_log('items',"Item removed to bin (ID:{$id})");
 		}
-		
 		
 		// ADD ITEM
 		if ($_GET[action]=='write') {

@@ -18,7 +18,9 @@
 		}
 	}
 
-	$row_seo = $db->get_row("select * from seo where url='".$_SERVER[REQUEST_URI]."'");
+	$row_seo = $db->get_row("select * from seo where url='".$_SERVER[REQUEST_URI]."' 
+		or (item_id='".(int)$row[id]."' and item_id>0) 
+		or (category_id='".(int)$_REQUEST[category]."' and category_id>0)");
 	if (trim($row_seo[title])!='') $title = $row_seo[title];
 	if (trim($row_seo[description])!='') $description = $row_seo[description];
 	if (trim($row_seo[keywords])!='') $keywords = $row_seo[keywords];

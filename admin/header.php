@@ -36,10 +36,10 @@
 			<ul class="nav nav-list well">
 				<li class="nav-header">Магазин</li>				
 				<?
-					$res = $db->query("select *, (select count(*) from items where category_id=categories.id and flag=1) as items_count from categories where flag=1 and parent_id=0");
+					$res = $db->query("select *, (select count(*) from items where category_id=categories.id and flag>0) as items_count from categories where flag=1 and parent_id=0");
 					while ($row=$db->fetch($res)) {
 						echo "<li><a><i class='icon-hand-right'></i> ".substr($row[name],0,32)." </a></li>";
-						$res_sub = $db->query("select *, (select count(*) from items where category_id=categories.id and flag=1) as items_count from categories where flag=1 and parent_id=$row[id]");
+						$res_sub = $db->query("select *, (select count(*) from items where category_id=categories.id and flag>0) as items_count from categories where flag=1 and parent_id=$row[id]");
 						while ($row_sub=$db->fetch($res_sub)) {
 							echo "<li class='subcat'><a href='?module=items&category_id=$row_sub[id]'>".substr($row_sub[name],0,32)." <span class='badge badge-info pull-right'>$row_sub[items_count]</span></a></li>";
 						}
