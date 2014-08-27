@@ -20,7 +20,7 @@
 			
 			$content .= "
 				<table class='table table-striped table-hover table-bordered'>
-				<thead><tr><th>#</th><th>Картинка</th><th style='width:40%'>Название</th><th>Цена</th><th>Акция</th><th>Доступно</th><th colspan=4></th></tr></thead><tbody>";
+				<thead><tr><th>#</th><th>Картинка</th><th style='width:40%'>Название</th><th>Цена</th><th>Акция</th><th>Доступно</th><th>Просмотры</th><th colspan=4></th></tr></thead><tbody>";
 				
 			
 			$res = $db->query("select * from items where category_id='$_REQUEST[category_id]' and ".($_GET[flag]===0 ? "flag=0 " : "(flag=2 or flag=1)")) or die(mysql_error());
@@ -32,6 +32,7 @@
 				    <td>$row[price] грн</td>
 				    <td>".($row[price_promo]>0 ? "$row[price_promo] грн" : '')."</td>
 				    <td>$row[stock_count]</td>
+				    <td>$row[views]</td>
 				    <td>
 				    	<a href='?module=seo&action=edit&item_id=$row[id]' title='Редактировать SEO'><img src='images/basic/globe.png'></a>
 				    </td><td>

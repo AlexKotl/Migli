@@ -4,6 +4,7 @@
 		if ($type=='item') {			
 			$url = translit($data[name]);
 			$url = preg_replace('/[^A-Za-z0-9_\-]/', '', $url);
+			$url = preg_replace('/[-]+/', '-', $url);
 			$url = "/details/$url-$data[id].html";
 		}
 		elseif ($type=='category') {

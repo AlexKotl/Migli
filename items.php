@@ -8,7 +8,7 @@
 		$res = $db->query("select items.*, categories.parent_id from items left join categories on items.category_id=categories.id where items.flag>0 "
 			.($category>0 ? "and items.category_id='$category'" : '')
 			.($category_base>0 ? "and categories.parent_id='$category_base'" : '')
-			. " order by items.id desc"
+			. " order by items.flag=2, items.id desc"
 			.($category==0 && $category_base==0 ? " limit 18" : '')
 		) or die(mysql_error());
 		while ($row=$db->fetch($res)) {
@@ -65,7 +65,7 @@
 			$tpl[img_previews] .= "<a href='/big_image/$row[id]/".(strpos($row[hide_watermark],",{$i},")!==false ? '0' : '')."$i/".format_filename($row[name]).".jpg' class='smallImage'>
 				<img src='/square_thumb/$row[id]/$i.jpg' width='100' height='100' alt='$row[name] на фото $i'/></a>";
 		$tpl[title] = "$row[name]";
-		$tpl[description] = $row[description];
+		$tpl[description] = str_replace("\n", '<p>', $row[description]);
 		$row[variants] = explode("\n",trim($row[variants]));
 		if (count($row[variants])>1) {
 			foreach ($row[variants] as $v) {

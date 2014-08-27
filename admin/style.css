@@ -28,4 +28,4 @@ td img {max-width: auto !important}
 
 tr.strong td {font-weight: bold; background-color: #dcebdf}
 li.subcat {font-size: 12px; margin-left: 20px;}
-table.table td {text-align: center}
+table.table td {text-align: center; padding:6px 3px; font-size: 13px;}
