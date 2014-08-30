@@ -6,20 +6,18 @@
 		elseif ($_REQUEST[name_confirm]!='') mail('slicer256@gmail.com','Migli spam block','Spam blocked.');
 		else {
 			$description = "Имя: {$_REQUEST[name]}
-	Email: {$_REQUEST[email]}
-	Телефон: {$_REQUEST[phone]}
-	
-	Способ доставки: {$_REQUEST[delivery]}";
+Email: {$_REQUEST[email]}
+Телефон: {$_REQUEST[phone]}
+
+Способ доставки: {$_REQUEST[delivery]}";
 			if ($_REQUEST[delivery_subway]!='') $description .= "\nДоставка до метро: {$_REQUEST[delivery_subway]}";
 			if ($_REQUEST[delivery_address]!='') $description .= "\nДоставка до адреса: \n{$_REQUEST[delivery_address]}";
 			if ($_REQUEST[notes]!='') $description .= "\n\nПримечания: \n{$_REQUEST[notes]}";
 			
-			$description = addslashes(serialize($_REQUEST));
-			
 			$db->insert('orders',array(
 				'items' => addslashes($_REQUEST[items]),
-				'description' => $description,
-				//'price' => $_REQUEST[price],
+				'description' => addslashes(serialize($_REQUEST)),
+				'price' => $_REQUEST[price],
 				'comments' => $_REQUEST[notes],
 				'status' => 2,
 				'timestamp' => time(),
@@ -28,7 +26,7 @@
 			$cbasket->clearBasket();
 			$cbasket->save();
 			
-			mailNotification('Оформлен новый заказ',"$description");
+			mailNotification('Оформлен новый заказ',$description);
 			add_log('basket', "Order submitted");					
 			
 			header("location: /cart?done");

@@ -6,6 +6,7 @@
 	<form action='' class='simpleForm'>
 	<?= "<input type='hidden' name='items' value='$tpl[items]'>" ?>
 	<input type="hidden" name='action' value='order'>
+	<input type="hidden" name='price' value='<?= $tpl[items_sum] ?>'>
 	<div class='orderText'>
 		<p/>ДОСТАВКА: По Киеву - бесплатно (самовывоза), при заказе на сумму выше 200 грн. - бесплатно на любую станцию метро. 
 		<p/>Доставка по Киеву на любую станцию метро (при заказе до 200 грн.) - 30 грн. 

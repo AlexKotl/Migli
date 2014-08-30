@@ -37,9 +37,9 @@
 		</div>
 		<div class='contacts'>
 			<i class="fa fa-phone fa-lg"></i> <b>Телефоны:</b>
-			<!-- <br>(093) 231 25 31  -->
+			<br>(093) 231 25 31			
+			<br>(066) 847 88 57
 			<br>(093) 673 94 83 
-			<!-- <br>(066) 847 88 57 -->
 		</div>
 		<div class='contacts'>
 			<i class="fa fa-home fa-lg"></i> <b>Адрес:</b>

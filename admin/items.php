@@ -94,6 +94,7 @@
 		}
 		
 		if ($_GET[action]=='add' || $_GET[action]=='edit') {
+			if ((int)$_REQUEST[category_id]==0) die('Категория не указана');
 			if ($_REQUEST[del_pic]!='')	{
 				unlink("../upload/items/$id"."_$_REQUEST[del_pic].jpg");
 				$sys_message .= "Картинка удалена";
@@ -110,8 +111,8 @@
 			
 			for ($i=1; $i<=$max_pictures; $i++) if (file_exists("../upload/items/$id"."_$i.jpg")) 
 				$gallery .= "<img src='/img.php?file=upload/items/$row[id]_$i.jpg&width=100'> 
-					<a href='?module=$module&action=$_REQUEST[action]&del_pic=$i&id=$id'>[Удалить]</a> 
-					<a href='?module=$module&action=$_REQUEST[action]&make_main=$i&id=$id'>[Сделать главной]</a>
+					<a href='?module=$module&action=$_REQUEST[action]&del_pic=$i&id=$id&category_id=$_REQUEST[category_id]'>[Удалить]</a> 
+					<a href='?module=$module&action=$_REQUEST[action]&make_main=$i&id=$id&category_id=$_REQUEST[category_id]'>[Сделать главной]</a>
 					<label style='margin-left:30px; display:inline'><input type='checkbox' name='hide_watermark[$i]' ".(strpos($row[hide_watermark],",{$i},")!==false ? 'checked' : '')."> Не накладывать лого</label>
 					<p>";
 			

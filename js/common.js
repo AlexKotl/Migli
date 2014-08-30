@@ -8,6 +8,7 @@ $(function() {
 		if (items<200 && $('[name=delivery]:checked').val()=='subway') items += 30;
 		if (items<200 && $('[name=delivery]:checked').val()=='global') items += 40;
 		$('#orderSum').html(items);
+		$('input[name=price]').val(items);
 	}
 	$('.add_to_basket').click(function() {
 		$(this).hide().load('/ajax/index.php?module=basket&action=add',{
