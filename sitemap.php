@@ -18,6 +18,7 @@
 	$res = $db->query("select * from items where flag=1");
 	while ($row=$db->fetch($res)) {
 		$urls[] = format_url('item', $row);
+		$urls[] = format_url('images', $row);
 	}	
 	
 ?>

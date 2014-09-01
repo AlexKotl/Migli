@@ -47,6 +47,11 @@ $(function() {
 		if ($(this).val().length>15) $('.commentAdd').show(500);
 	});
 	
+	$('.images a.all').click(function() {
+		window.open($(this).attr('href'), 'popup', 'height=700, width=800, location=no, status=no, scrollbars=yes, menubars=no, toolbars=no, resizable=no') 
+		return false;
+	});
+	
 	if ($.cookie("currentColor")!=undefined) less.modifyVars({ accent_color : $.cookie("currentColor") });
 	
 });

@@ -34,6 +34,9 @@
 	</div>
 	<div class='images'>
 		<?= $tpl[img_previews] ?>
+		<a href='<?= format_url('images', $tpl[item]) ?>' class='all' target="_blank">
+			<i class='fa fa-camera-retro fa-2x'></i> Все картинки
+		</a>
 	</div>
 	
 	<br class='clearBoth'>

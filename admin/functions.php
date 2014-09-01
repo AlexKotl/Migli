@@ -7,6 +7,12 @@
 			$url = preg_replace('/[-]+/', '-', $url);
 			$url = "/details/$url-$data[id].html";
 		}
+		elseif ($type=='images') {			
+			$url = translit($data[name]);
+			$url = preg_replace('/[^A-Za-z0-9_\-]/', '', $url);
+			$url = preg_replace('/[-]+/', '-', $url);
+			$url = "/$data[id]/$url-pictures.html";
+		}
 		elseif ($type=='category') {
 			$url = "/store";
 			if ($data[parent_id]>0) $url .= "/".preg_replace('/[^A-Za-z0-9_\-]/', '', translit($data[parent_name]))."-$data[parent_id]";
@@ -48,7 +54,7 @@
 	function get_tpl($file) {
 		global $tpl;
 		ob_start();
-		include "tpl/$file";
+		include basename(__FILE__)."/../tpl/$file";
 		return ob_get_clean();
 	}
 	
