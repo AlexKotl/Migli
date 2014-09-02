@@ -8,8 +8,7 @@
 	<input type="hidden" name='action' value='order'>
 	<input type="hidden" name='price' value='<?= $tpl[items_sum] ?>'>
 	<div class='orderText'>
-		<p/>ДОСТАВКА: По Киеву - бесплатно (самовывоза), при заказе на сумму выше 200 грн. - бесплатно на любую станцию метро. 
-		<p/>Доставка по Киеву на любую станцию метро (при заказе до 200 грн.) - 30 грн. 
+		<p/>ДОСТАВКА: Самовывоз (м. Нивки) 
 		<p/>Доставка по Украине за счет покупателя по тарифам выбранной вами компании (отдаем предпочтение Новой почте). 
 		<p/>ПРИ ЗАКАЗЕ ОТ 200 ГРН. И ОПЛАТЕ НА КАРТУ ПРИВАТБАНКА ДОСТАВКА ПО УКРАИНЕ НОВОЙ ПОЧТОЙ БЕСПЛАТНО.
 	</div>
@@ -20,7 +19,7 @@
 		<tr><td>Телефон:</td><td><input type='text' name='phone' value=''></td></tr>
 		<tr><td>Способ доставки:</td><td>
 			<label><input type="radio" name='delivery' value='self' checked="" data-type='self' data-cost='0'> Самовывоз <br><small>Киев, станция <img src='/img/icons/metro.jpeg' style="vertical-align:middle"> "Нивки"</small></label> <br>
-			<label><input type="radio" name='delivery' value='subway' data-type='subway' data-cost='30'> Доставка до станции метро<br><small>доставка на любую станцию метро</small></label> <br>
+			<!-- <label><input type="radio" name='delivery' value='subway' data-type='subway' data-cost='30'> Доставка до станции метро<br><small>доставка на любую станцию метро</small></label> <br> -->
 			<label><input type="radio" name='delivery' value='global' data-type='global' data-cost=''> Доставка по Украине<br><small>"Новая Почта" или "Укрпочта"</small></label> <br>
 		</td></tr>
 		<tr class='delivery_input hidden' data-type='global'><td>Адрес доставки:</td><td><textarea style='height:60px' name='delivery_address'></textarea></td></tr>
