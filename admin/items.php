@@ -62,7 +62,7 @@
 			if ($id==0) {
 				if ($_REQUEST[name]=='') die('Enter name');
 				$db->insert('items', array(
-					'name', 'stock', 'description', 'stock_count', 'variants', 'category_id' => $_REQUEST[category_id], 'price', 'price_promo', 'flag' => 1, 'hide_watermark' => $hide_watermark,
+					'name', 'stock', 'description', 'stock_count', 'variants', 'category_id' => $_REQUEST[category_id], 'price', 'price_promo', 'flag' => 1, 'hide_watermark' => $hide_watermark, 'ribbon'
 				)) or die(mysql_error());
 				$id = $db->last_insert_id('items');
 									
@@ -71,7 +71,7 @@
 			}
 			else {
 				$db->update('items', $id, array(
-					'name', 'stock', 'description', 'variants', 'stock_count', 'price', 'price_promo', 'hide_watermark' => $hide_watermark,
+					'name', 'stock', 'description', 'variants', 'stock_count', 'price', 'price_promo', 'hide_watermark' => $hide_watermark, 'ribbon'
 				)) or die(mysql_error());
 				
 				// fix first image
@@ -147,6 +147,18 @@
 			    <label class='control-label' for='inputEmail'>Акционная цена</label>
 			    <div class='controls'>
 			      <div class='input-prepend input-append'><span class='add-on'>₴</span><input type='text' id='inputEmail' name='price_promo' placeholder='' value='$row[price_promo]' style='width:180px'></div>
+			    </div>
+			  </div>
+			  <div class='control-group'>
+			    <label class='control-label' for='inputEmail'>Ленточка</label>
+			    <div class='controls'>
+			      <select name='ribbon'>
+			      	<option value=''>нет</option>
+			      	<option value='handmade' ".($row[ribbon]=='handmade' ? 'selected' : '').">Handmade</option>
+			      	<option value='discount' ".($row[ribbon]=='discount' ? 'selected' : '').">Скидка</option>
+			      	<option value='new' ".($row[ribbon]=='new' ? 'selected' : '').">Новинка</option>
+			      	<option value='popular' ".($row[ribbon]=='popular' ? 'selected' : '').">Популярное</option>
+			      </select>
 			    </div>
 			  </div>
 			  <div class='control-group'>
