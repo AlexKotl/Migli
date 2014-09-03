@@ -17,6 +17,7 @@
 			$tpl[content] .= "
 				<a href='".format_url('item',$row)."' class='item".($row[flag]==2 ? ' unavailable' : '')."'>
 					<div class='header'><span>$row[name]</span></div>
+					<div class='ribbon handmade'></div>
 					<div class='image'><img src='/list_thumb/$row[id]/".format_filename($row[name]).".jpg' width=230 height=178  alt='Купить $row[name]' /></div>
 					<div class='footer'>
 						<div class='left'>$price</div>
