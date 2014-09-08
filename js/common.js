@@ -11,6 +11,8 @@ $(function() {
 		$('input[name=price]').val(items);
 	}
 	$('.add_to_basket').click(function() {
+		//alert($(this).attr('href'));
+		if ($(this).attr('href')!=undefined) return true;
 		$(this).hide().load('/ajax/index.php?module=basket&action=add',{
 			'id': $(this).attr('data-id'),
 			'variant': $('#variant').val(),

@@ -44,7 +44,7 @@ Email: {$_REQUEST[email]}
 		$total_count += $item[count];
 		$total_amount += $item[count] * $row[price];
 		$tpl[content] .= "<tr>
-			<td><img src='/images/$row[id].jpg?width=100'></td>
+			<td><a href='".format_url('item',$row)."'><img src='/images/$row[id].jpg?width=100'></a></td>
 			<td>$row[name] ".($item[variant]!='' ? "({$item[variant]})" : '')."</td>
 			<td>$row[price] грн</td>
 			<td>
