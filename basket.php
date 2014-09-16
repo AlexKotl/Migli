@@ -28,7 +28,10 @@ Email: {$_REQUEST[email]}
 			$cbasket->save();
 			
 			mailNotification('Оформлен новый заказ',$description);
-			add_log('basket', "Order submitted");					
+			add_log('basket', "Order submitted (ID:{$order_id})");
+			
+			send_mail($_REQUEST[email],'Заказ оформлен',"Ваш заказ оформлен. С вами в ближайшее время свяжется менеджер. \nДля оплаты товара перейдите по ссылке: \nhttp://figli-migli.net/cart?done&order=".$order_id);							
+
 			
 			header("location: /cart?done&order=".$order_id);
 		}
@@ -38,26 +41,27 @@ Email: {$_REQUEST[email]}
 		$row = $db->get_row("select * from orders where id='".(int)$_REQUEST[order]."'");
 		
 		$tpl[content] = "<h3>Спасибо. Ваш заказ на сумму {$row[price]} грн размещен</h3>
-			Для оплаты перейдите по ссылке ниже: <p>";
+			Вы можете оплатить ваш заказ по ссылке ниже: <p>";
 		
 		include "classes/liqpay.php";
 		
 		$liqpay = new LiqPay('i97839051443', 'VT9XujjLgS3LW3o6CQTFtIUkgixS8mvoTZMZSHgb');
-		$tpl[content] .= $liqpay->cnb_form(array(
+		$tpl[content] .= 
+			$liqpay->cnb_form(array(
 			'amount'         => $row[price],
 			'currency'       => 'UAH',
 			'description'    => "Оплата заказа №".$row[id]." на сумму {$row[price]} грн",
-			'order_id'       => 'order_id_1',
+			'order_id'       => 'order_id_'.$_REQUEST[order],
 			'type'           => 'buy',
 			'result_url'	 => 'http://figli-migli.net/cart?complete',
 			'language'		 => 'ru',
 			'sandbox'		 => '1',
-		));
-		//$tpl[content] .= get_tpl('basket_pay.tpl');
+		));		
 	}
 	
 	elseif (isset($_REQUEST[complete])) {
 		$tpl[sys_message] .= "Ваш заказ оплачен! Менеджер магазина свяжется с вами в ближайшее время.";
+		add_log('basket', "Order successfully payed");
 	}
 	
 	else {

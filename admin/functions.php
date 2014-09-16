@@ -76,4 +76,8 @@
 		));
 	}
 	
+	function send_mail($to,$subject,$message) {
+		mail($to, $subject, $message, "From: \"Figli-Migli topsho\" <info@figli-migli.net>");
+	}
+	
 ?>

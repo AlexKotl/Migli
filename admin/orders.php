@@ -60,7 +60,7 @@
 				<tr><td>Заказ</td><td>";
 			foreach (unserialize($row[items]) as $item) {
 				$row_item = $db->get_row("select * from items where id='$item[id]'");
-				$content .= "<br><a href='/index.php?module=items&id=$row_item[id]'>{$row_item[name]} {$item[variant]} ({$row_item[price]})</a>";
+				$content .= "<br><a href='/index.php?module=items&id=$row_item[id]'>{$row_item[name]} {$item[variant]} ({$row_item[price]}) - {$item[count]} шт</a>";
 			}
 			$content .= "</td></tr></tbody></table>
 				<a href='?module=$module&id=$id&action=flag&flag=3' class='btn btn-danger'>Отклонить заказ</a>
