@@ -79,6 +79,11 @@
 				<option>Теремки</option>
 			</select>
 		</td></tr>
+		<tr><td>Предпочтительный способ связи:</td><td><select name='contact_method'>
+			<option>Телефон</option>
+			<option>Email</option>
+			<option>SMS</option>
+		</select></td></tr>
 		<tr><td>Ваши примечания:</td><td><textarea style='height:60px' name='notes'></textarea></td></tr>
 		<tr><td></td><td><input type="submit" class='button' value='Оформить заказ' style='width:200px; font-size:12px'></td></tr>
 	</table>

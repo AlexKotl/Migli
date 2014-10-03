@@ -8,8 +8,10 @@
 			$description = "Имя: {$_REQUEST[surname]} {$_REQUEST[name]}
 Email: {$_REQUEST[email]}
 Телефон: {$_REQUEST[phone]}
+Способ связи: {$_REQUEST[contact_method]}
 
-Способ доставки: {$_REQUEST[delivery]}";
+Способ доставки: {$_REQUEST[delivery]}
+К оплате: {$_REQUEST[price]}";
 			if ($_REQUEST[delivery_subway]!='') $description .= "\nДоставка до метро: {$_REQUEST[delivery_subway]}";
 			if ($_REQUEST[delivery_address]!='') $description .= "\nДоставка до адреса: \n{$_REQUEST[delivery_address]}";
 			if ($_REQUEST[notes]!='') $description .= "\n\nПримечания: \n{$_REQUEST[notes]}";
