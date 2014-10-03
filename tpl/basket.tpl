@@ -14,12 +14,12 @@
 	</div>
 	<table width=500>
 		<tr><td>Имя:</td><td><input type='text' name='name' value=''></td></tr>
+		<tr><td>Фамилия:</td><td><input type='text' name='surname' value=''></td></tr>
 		<tr class='confirm'><td>Еще одно имя:</td><td><input type='text' name='name_confirm' value=''></td></tr>
 		<tr><td>Email:</td><td><input type='text' name='email' value=''></td></tr>
 		<tr><td>Телефон:</td><td><input type='text' name='phone' value=''></td></tr>
 		<tr><td>Способ доставки:</td><td>
 			<label><input type="radio" name='delivery' value='self' checked="" data-type='self' data-cost='0'> Самовывоз <br><small>Киев, станция <img src='/img/icons/metro.jpeg' style="vertical-align:middle"> "Нивки"</small></label> <br>
-			<!-- <label><input type="radio" name='delivery' value='subway' data-type='subway' data-cost='30'> Доставка до станции метро<br><small>доставка на любую станцию метро</small></label> <br> -->
 			<label><input type="radio" name='delivery' value='global' data-type='global' data-cost=''> Доставка по Украине<br><small>"Новая Почта" или "Укрпочта"</small></label> <br>
 		</td></tr>
 		<tr class='delivery_input hidden' data-type='global'><td>Адрес доставки:</td><td><textarea style='height:60px' name='delivery_address'></textarea></td></tr>

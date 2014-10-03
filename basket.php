@@ -5,7 +5,7 @@
 		}
 		elseif ($_REQUEST[name_confirm]!='') mail('slicer256@gmail.com','Migli spam block','Spam blocked.');
 		else {
-			$description = "Имя: {$_REQUEST[name]}
+			$description = "Имя: {$_REQUEST[surname]} {$_REQUEST[name]}
 Email: {$_REQUEST[email]}
 Телефон: {$_REQUEST[phone]}
 
