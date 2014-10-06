@@ -16,6 +16,7 @@
 	RewriteRule ^store/(.*)-([0-9]+)$ index.php?module=items&category_base=$2 [L]
 	RewriteRule ^cart$ index.php?module=basket [L,QSA]
 	RewriteRule ^subscribe$ index.php?module=subscribe [L,QSA]
+	RewriteRule ^slinks.html$ index.php?module=textpages&page=seo_junk [L,QSA]
 	
 	RewriteRule ^images/([0-9]+).jpg$ img.php?file=upload/items/$1_1.jpg [L,QSA]
 	RewriteRule ^images/([0-9]+)/([0-9]+).jpg$ img.php?file=upload/items/$2_$1.jpg [L,QSA]
