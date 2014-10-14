@@ -17,8 +17,10 @@
 			$url = "/store";
 			if ($data[parent_id]>0) $url .= "/".preg_replace('/[^A-Za-z0-9_\-]/', '', translit($data[parent_name]))."-$data[parent_id]";
 			if ($data[id]>0) $url .= '/'.preg_replace('/[^A-Za-z0-9_\-]/', '', translit($data[name]))."-$data[id]";
-			
-			
+		}
+		elseif ($type=='tag') {
+			$url = "/list";
+			$url .= "/".$data;
 		}
 		return $url;
 	}

@@ -4,6 +4,11 @@
 				<?= $tpl[left_menu] ?> </ul>
 			</ul>
 			
+			<h3>Поиск по тэгам</h3>
+			<div class='tagsList'>
+				<?= $tpl[tags]  ?>
+			</div>
+			
 			<form class='subscribe' action='/subscribe' method='post'>
 			<div class='border'>
 				<div class='icon'><i class='fa fa-envelope'></i></div>

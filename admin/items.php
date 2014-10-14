@@ -20,15 +20,17 @@
 			
 			$content .= "
 				<table class='table table-striped table-hover table-bordered'>
-				<thead><tr><th>#</th><th>Картинка</th><th style='width:40%'>Название</th><th>Цена</th><th>Акция</th><th>Доступно</th><th>Просмотры</th><th colspan=4></th></tr></thead><tbody>";
+				<thead><tr><th>#</th><th>Картинка</th><th style='width1:30%'>Название</th><th>Тэги</th><th>Цена</th><th>Акция</th><th>Нал</th><th>Пр</th><th colspan=4></th></tr></thead><tbody>";
 				
 			
 			$res = $db->query("select * from items where category_id='$_REQUEST[category_id]' and ".($_GET[flag]===0 ? "flag=0 " : "(flag=2 or flag=1)")) or die(mysql_error());
 			while ($row=$db->fetch($res)) {
+				if (strlen($row[tags])>50) $row[tags] = mb_substr($row[tags], 0,50,'utf-8').'...';
 				$content .= "<tr ".($row[flag]==2 ? "class='error'" : '').">
 					<td>$row[id]</td>
 					<td><img src='/img.php?file=upload/items/$row[id]_1.jpg&width=50'></td>
 				    <td><a href='/?id=$row[id]'>$row[name]</a></td>
+				    <td><small>$row[tags]</small></td>
 				    <td>$row[price] грн</td>
 				    <td>".($row[price_promo]>0 ? "$row[price_promo] грн" : '')."</td>
 				    <td>$row[stock_count]</td>
@@ -61,8 +63,11 @@
 			$hide_watermark = ','.implode(',',array_keys($_REQUEST[hide_watermark])).',';
 			if ($id==0) {
 				if ($_REQUEST[name]=='') die('Enter name');
+				$_REQUEST[tags] = mb_convert_case($_REQUEST[tags], MB_CASE_LOWER, "UTF-8");
 				$db->insert('items', array(
-					'name', 'stock', 'description', 'stock_count', 'variants', 'category_id' => $_REQUEST[category_id], 'price', 'price_promo', 'flag' => 1, 'hide_watermark' => $hide_watermark, 'ribbon'
+					'name', 'stock', 'description', 'stock_count', 'variants', 
+					'category_id' => $_REQUEST[category_id], 'price', 'price_promo', 
+					'flag' => 1, 'hide_watermark' => $hide_watermark, 'ribbon', 'tags',
 				)) or die(mysql_error());
 				$id = $db->last_insert_id('items');
 									
@@ -71,7 +76,7 @@
 			}
 			else {
 				$db->update('items', $id, array(
-					'name', 'stock', 'description', 'variants', 'stock_count', 'price', 'price_promo', 'hide_watermark' => $hide_watermark, 'ribbon'
+					'name', 'stock', 'description', 'variants', 'stock_count', 'price', 'price_promo', 'hide_watermark' => $hide_watermark, 'ribbon', 'tags'
 				)) or die(mysql_error());
 				
 				// fix first image
@@ -89,6 +94,8 @@
 				do {$i++;} while (file_exists("../upload/items/$id"."_$i.jpg"));
 				copy("inc/fileuploader/files/$f", "../upload/items/$id"."_$i.jpg");
 			}
+			
+			CCache::updateTags();
 
 			
 		}
@@ -159,6 +166,12 @@
 			      	<option value='new' ".($row[ribbon]=='new' ? 'selected' : '').">Новинка</option>
 			      	<option value='popular' ".($row[ribbon]=='popular' ? 'selected' : '').">Популярное</option>
 			      </select>
+			    </div>
+			  </div>
+			  <div class='control-group'>
+			    <label class='control-label' for='inputEmail'>Тэги</label>
+			    <div class='controls'>
+			      <input type='text' id='inputEmail' name='tags' placeholder='' value='$row[tags]'>
 			    </div>
 			  </div>
 			  <div class='control-group'>

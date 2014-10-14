@@ -6,6 +6,7 @@
 	if ($id==0) {
 		$tpl[content] .= "<div class='itemsList'>";
 		$res = $db->query("select items.*, categories.parent_id from items left join categories on items.category_id=categories.id where items.flag>0 "
+			.($_REQUEST[tag]!='' ? " and tags like '%".str_replace(array('"',"'",'%'), '', $_REQUEST[tag])."%'" : '')
 			.($category>0 ? "and items.category_id='$category'" : '')
 			.($category_base>0 ? "and categories.parent_id='$category_base'" : '')
 			. " order by items.flag=2, items.id desc"

@@ -3,6 +3,7 @@
 	ini_set('display_errors',1);
 	error_reporting(E_ALL && ~E_NOTICE);
 	include "classes/class_mysql.php";
+	include "classes/class_cache.php";
 	include "admin/config.php";
 	include "admin/functions.php";
 	$db = new CMysql();
@@ -19,7 +20,13 @@
 	while ($row=$db->fetch($res)) {
 		$urls[] = format_url('item', $row);
 		$urls[] = format_url('images', $row);
-	}	
+	}
+	
+	// tags
+	$tags = unserialize(CCache::getCache('tags'));
+	foreach ($tags as $k => $v) {
+		$urls[] = format_url('tag', $k);
+	}
 	
 ?>
 

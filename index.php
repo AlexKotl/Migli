@@ -6,6 +6,7 @@
 	include "classes/class_mysql.php";
 	include "classes/class_basket.php";
 	include "classes/class_comments.php";
+	include "classes/class_cache.php";
 	include "admin/config.php";
 	include "admin/functions.php";
 	$db = new CMysql();
@@ -47,13 +48,21 @@
 
 	}
 	
+	// format tags
+	$tags = unserialize(CCache::getCache('tags'));
+	$max = max($tags);
+	foreach ($tags as $k => $v) {
+		$pos = round($v / $max* 5);
+		$tpl[tags] .= "<a href='".format_url('tag',$k)."' class='size{$pos}' title='{$k} - {$v}'>".mb_convert_case($k, MB_CASE_TITLE, "UTF-8")."</a>";
+	}
+	
 	$tpl[left_menu] = get_tpl('left_menu.tpl');
-
+	
 	// include module
 	$module = preg_replace('/([^a-z])/','',$_GET[module]);
 	if ($module=='') $module = 'items';
 	
 	include "{$module}.php";
-	include "seo.php";
+	include "seo.php";	
 	include 'tpl/main.tpl';
 ?>

@@ -2,6 +2,7 @@
 	ini_set('display_errors',1);
 	error_reporting(E_ALL && ~E_NOTICE);
 	include "../classes/class_mysql.php";
+	include "../classes/class_cache.php";
 	include "functions.php";
 	include "config.php";
 	session_start();
