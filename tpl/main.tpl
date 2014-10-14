@@ -67,15 +67,6 @@
 			<? if ($tpl[sys_message]!='') {?>
 				<br><br><?= strpos($tpl[sys_message],'error')!==false ? "<div class='sys_message error'>" : "<div class='sys_message'>" ?> <?= $tpl[sys_message] ?></div><p>
 			<? } ?>
-			<!--
-			<div class='pagination'>
-				<a href=''>1</a>
-				<a href=''>2</a>
-				<a href=''>3</a>
-				...
-				<a href=''>10</a>
-			</div>
-			-->
 			
 			<?= $tpl[content] ?> 
 			

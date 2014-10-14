@@ -1,4 +1,6 @@
 <?
+	include "classes/class_pagination.php";
+	
 	$id = (int)$_GET[id];
 	$category = (int)$_GET[category];
 	$category_base = (int)$_GET[category_base];
@@ -10,8 +12,9 @@
 			.($category>0 ? "and items.category_id='$category'" : '')
 			.($category_base>0 ? "and categories.parent_id='$category_base'" : '')
 			. " order by items.flag=2, items.id desc"
-			.($category==0 && $category_base==0 ? " limit 18" : '')
+			.($category==0 && $category_base==0 ? " limit 21" : '')
 		) or die(mysql_error());
+		
 		while ($row=$db->fetch($res)) {
 			$price = "$row[price] грн";
 			if ($row[flag]==2) $price = "Нет в наличии";
@@ -29,6 +32,11 @@
 		}
 		$tpl[content] .= "</div>";
 		
+		$pagination = new CPagination(100,9);
+		foreach ($pagination->getList(3) as $v) {
+			//$tpl[pagination] .= "<a href=''>{$v}</a>";
+		}
+		
 		if ($category_base>0) {
 			$row_cat = $db->get_row("select * from categories where id='$category_base'");
 			$navigation_bar .= "<a href='".format_url('category',$row_cat)."'>$row_cat[name]</a> ";
@@ -38,6 +46,7 @@
 			$navigation_bar .= "<a href='".format_url('category',$row_cat)."'>$row_cat[name]</a> ";
 		}
 		
+		$tpl[content] = get_tpl('items_list.tpl');
 		
 	}
 	
