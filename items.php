@@ -74,7 +74,7 @@
 		$tpl[add_button] = ($cbasket->getItem($row[id])!==false ? "<a class='add' href='/cart'>Товар в корзине</a>" : "<a class='add_to_basket add' data-id='$row[id]'><i class='fa fa-shopping-cart fa-2x'></i> Добавить в корзину</a>");		
 		$tpl[img_previews] .= "<a href='/big_image/$row[id]/".(strpos($row[hide_watermark],",1,")!==false ? '0' : '')."1/".format_filename($row[name]).".jpg' class='bigImage'>
 			<img src='/medium_image/$row[id]/1/".format_filename($row[name]).".jpg' alt='$row[name] на фото'/></a>";
-		for ($i=2; $i<=20; $i++) if (file_exists("upload/items/$row[id]_$i.jpg")) 
+		for ($i=2; $i<=30; $i++) if (file_exists("upload/items/$row[id]_$i.jpg")) 
 			$tpl[img_previews] .= "<a href='/big_image/$row[id]/".(strpos($row[hide_watermark],",{$i},")!==false ? '0' : '')."$i/".format_filename($row[name]).".jpg' class='smallImage'>
 				<img src='/square_thumb/$row[id]/$i.jpg' width='100' height='100' alt='$row[name] на фото $i'/></a>";
 		$tpl[title] = "$row[name]";

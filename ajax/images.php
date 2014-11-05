@@ -20,7 +20,7 @@
 	<a href='".format_url('item',$row)."'>Вернуться на страницу описания</a>
 	";
 
-	for ($i=1; $i<=20; $i++) if (file_exists("../upload/items/$row[id]_$i.jpg")) {	
+	for ($i=1; $i<=30; $i++) if (file_exists("../upload/items/$row[id]_$i.jpg")) {	
 		if ($i%4 == 3) $alt = "Фото {$row[name]}"; 
 		elseif ($i%4 == 2) $alt = "Картинка {$row[name]}"; 
 		elseif ($i%4 == 1) $alt = "{$row[name]} изображение"; 

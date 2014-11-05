@@ -8,7 +8,7 @@
 	<input type="hidden" name='action' value='order'>
 	<input type="hidden" name='price' value='<?= $tpl[items_sum] ?>'>
 	<div class='orderText'>
-		<p/>ДОСТАВКА: Самовывоз (м. Нивки) 
+		<p/>ДОСТАВКА: Самовывоз с ул. Петрозаводская 2а, офис 406 (м. Вокзальная) 
 		<p/>Доставка по Украине за счет покупателя по тарифам выбранной вами компании (отдаем предпочтение Новой почте). 
 		<p/>ПРИ ЗАКАЗЕ ОТ 200 ГРН. И ОПЛАТЕ НА КАРТУ ПРИВАТБАНКА ДОСТАВКА ПО УКРАИНЕ НОВОЙ ПОЧТОЙ БЕСПЛАТНО.
 	</div>
@@ -19,7 +19,7 @@
 		<tr><td>Email:</td><td><input type='text' name='email' value=''></td></tr>
 		<tr><td>Телефон:</td><td><input type='text' name='phone' value=''></td></tr>
 		<tr><td>Способ доставки:</td><td>
-			<label><input type="radio" name='delivery' value='self' checked="" data-type='self' data-cost='0'> Самовывоз <br><small>Киев, станция <img src='/img/icons/metro.jpeg' style="vertical-align:middle"> "Нивки"</small></label> <br>
+			<label><input type="radio" name='delivery' value='self' checked="" data-type='self' data-cost='0'> Самовывоз <br><small>Киев, станция <img src='/img/icons/metro.jpeg' style="vertical-align:middle"> "Вокзальная"</small></label> <br>
 			<label><input type="radio" name='delivery' value='global' data-type='global' data-cost=''> Доставка по Украине<br><small>"Новая Почта" или "Укрпочта"</small></label> <br>
 		</td></tr>
 		<tr class='delivery_input hidden' data-type='global'><td>Адрес доставки:</td><td><textarea style='height:60px' name='delivery_address'></textarea></td></tr>

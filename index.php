@@ -31,12 +31,12 @@
 			$tpl[left_menu] .= "<li><a href=''><i class='fa fa-plus-circle'></i> $row[parent_name]</a></li>";
 		}
 		elseif ($cur_parent!=$row[parent_id]) { // begin new submenu
-			$row_base = $row; $row_base[id] = NULL;
+			$row_base = $row; $row_base[id] = NULL; 
 			$tpl[menu] .= "<li><a href='".format_url('category',$row_base)."'>$row[parent_name]</a> 
 				<ul style='display:none'>
 				<li><a href='".format_url('category',$row)."'>$row[name]</a></li>\n";
-			$tpl[left_menu] .= "<li><a href='".format_url('category',$row_base)."' class='active'><i class='fa fa-minus-circle'></i> $row[parent_name]</a> 
-				<ul>
+			$tpl[left_menu] .= "<li><a href='".format_url('category',$row_base)."' class='menuToggler ".($row_base[parent_id]==$_GET[category_base] ? 'active' : '')."'><i class='fa fa-plus-circle'></i> $row[parent_name]</a> 
+				<ul class=''>
 				<li><a href='".format_url('category',$row)."'><i class='fa fa-angle-right'></i> $row[name]</a></li>\n";
 			$cur_parent = $row[parent_id];
 			$is_submenu_opened = true;

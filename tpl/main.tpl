@@ -43,7 +43,7 @@
 		</div>
 		<div class='contacts'>
 			<i class="fa fa-home fa-lg"></i> <b>Адрес:</b>
-			<br>Киев, ул. Щербакова
+			<br>Киев, Петрозаводская 2а, офис 406
 			<br>пн-пт 9:00-18:00
 		</div>		
 		<a href='/'><div class='siteLogo'><b>Figli-Migli</b> <span>TOPSHOP</span></div></a>
@@ -82,6 +82,11 @@
 	<div class="siteFooter">
 		<div class='content'>
 			<div class='copy'>Copyright &copy; <?= date('Y') ?> FIGLI-MIGLI TOPSHOP </div>
+			<div class='menu'>
+				<a href='/delivery'>Доставка</a> | 
+				<a href='/payment'>Оплата</a> | 
+				<a href='/contacts'>Контакты</a> 
+			</div>
 			<div class='social'>
 				Мы в соц сетях
 				<a class='fb' href='https://vk.com/figlimiglishop'><i class='fa fa-vk fa-2x'></i></a>

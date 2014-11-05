@@ -15,6 +15,10 @@
 				$title = "$row_cat[name]. Купить $row_cat[name] на подарок. Figli-Migli topshop";
 				$description = "Подарки, $row_cat[name], купить $row_cat[name]";
 			}
+			elseif (isset($_REQUEST[tag])) {
+				$title = ucfirst($_REQUEST[tag]).". Купить в магазине приятных мелочей.";
+				$description = ucfirst($_REQUEST[tag]).", большой выбор в интернет-магазине приятных мелочей и подарков.";
+			}
 		}
 	}
 
