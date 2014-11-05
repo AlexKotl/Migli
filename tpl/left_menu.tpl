@@ -4,6 +4,9 @@
 				<?= $tpl[left_menu] ?> </ul>
 			</ul>
 			
+			<h3><a href='/feedback'>Отзывы о нас</a></h3>
+			
+			<br><br>
 			<h3>Поиск по тэгам</h3>
 			<div class='tagsList'>
 				<?= $tpl[tags]  ?>

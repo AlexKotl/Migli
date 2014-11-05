@@ -21,6 +21,8 @@
 	RewriteRule ^delivery$ index.php?module=textpages&page=delivery [L,QSA]
 	RewriteRule ^payment$ index.php?module=textpages&page=payment [L,QSA]
 	RewriteRule ^contacts$ index.php?module=contact [L,QSA]
+	RewriteRule ^feedback$ index.php?module=feedback [L,QSA]
+	RewriteRule ^feedback/add$ index.php?module=feedback&action=add [L,QSA]
 	
 	RewriteRule ^images/([0-9]+).jpg$ img.php?file=upload/items/$1_1.jpg [L,QSA]
 	RewriteRule ^images/([0-9]+)/([0-9]+).jpg$ img.php?file=upload/items/$2_$1.jpg [L,QSA]

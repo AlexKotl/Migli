@@ -26,7 +26,8 @@ table.simpleTable {width: 100%; border-collapse:collapse; }
 
 .changeColor {height:14px; width:14px; display: inline-block; border-radius: 7px; background-color: red; box-shadow: inset -1px -1px 1px 0px white}
 
-.button {border:1px solid @accent_color; background: @accent_color; color:white; border-radius: 2px; padding:10px 0;}
+.button {border:1px solid @accent_color; background: @accent_color; color:white; border-radius: 2px; padding:10px 10px;}
+.button:hover {background-color: lighten(@accent_color, 15%)}
 
 .siteHead {
 	margin:auto; width: @site_width; padding:12px 0; font-size: 10.5pt;
