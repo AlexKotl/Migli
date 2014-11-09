@@ -16,7 +16,8 @@
 		) or die(mysql_error());
 		
 		while ($row=$db->fetch($res)) {
-			$price = "$row[price] грн";
+			if ($row[price_promo]>0) $price = "<del>$row[price] грн</del> <br> $row[price_promo] грн</del>";
+			else $price = "$row[price] грн";
 			if ($row[flag]==2) $price = "Нет в наличии";
 			$tpl[content] .= "
 				<a href='".format_url('item',$row)."' class='item".($row[flag]==2 ? ' unavailable' : '')."'>
@@ -24,7 +25,7 @@
 					".($row[ribbon]!='' ? "<div class='ribbon {$row[ribbon]}'></div>" : '')."
 					<div class='image'><img src='/list_thumb/$row[id]/".format_filename($row[name]).".jpg' width=230 height=178  alt='Купить $row[name]' /></div>
 					<div class='footer'>
-						<div class='left'>$price</div>
+						<div class='left ".($row[price_promo]>0 ? 'double' : '')."'>$price</div>
 						<div class='right'>Купить</div>
 					</div>
 				</a>

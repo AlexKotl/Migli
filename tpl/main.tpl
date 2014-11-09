@@ -13,7 +13,9 @@
 	<script src="/js/jquery.fancybox.pack.js" type="text/javascript"></script>
 	<script src="/js/jquery.slides.min.js" type="text/javascript"></script>
 	<script src="/js/jquery.cookie.js" type="text/javascript"></script>
+	<script src="/js/scrollToTop.js" type="text/javascript"></script>
 	<script src="/js/common.js" type="text/javascript"></script>
+	
 	
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600&amp;subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
@@ -37,13 +39,14 @@
 		</div>
 		<div class='contacts'>
 			<i class="fa fa-phone fa-lg"></i> <b>Телефоны:</b>
+			<br>(044) 248 28 43
 			<br>(093) 231 25 31			
 			<br>(066) 847 88 57
 			<br>(093) 673 94 83 
 		</div>
 		<div class='contacts'>
 			<i class="fa fa-home fa-lg"></i> <b>Адрес:</b>
-			<br>Киев, Петрозаводская 2а, офис 406
+			<br>Киев, Петрозаводская 2а (Григория Кирпы), <br>офис 406
 			<br>пн-пт 9:00-18:00
 		</div>		
 		<a href='/'><div class='siteLogo'><b>Figli-Migli</b> <span>TOPSHOP</span></div></a>
@@ -140,6 +143,8 @@ var s = document.createElement('script'); s.type = 'text/javascript'; s.async = 
 </script>
 <noscript><div><img src="//mc.yandex.ru/watch/25973542" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
+
+<a id="back_to_top"><img src="/img/button_scroll_to_top.png" width="55" height="55" alt="Scroll to Top" /></a>
 
 </body>
 </html>

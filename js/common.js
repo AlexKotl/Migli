@@ -61,5 +61,9 @@ $(function() {
 	
 	if ($.cookie("currentColor")!=undefined) less.modifyVars({ accent_color : $.cookie("currentColor") });
 	
+	$('#back_to_top').scrollToTop();
+	
+	$(".images a, a.gallery").attr('rel','gallery').fancybox();
+	
 	
 });

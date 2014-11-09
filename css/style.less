@@ -115,8 +115,9 @@ table.simpleTable {width: 100%; border-collapse:collapse; }
 			.header span { display:inline-block; vertical-align:middle; padding:0 17px;}
 			.image {height:178px}
 			.footer {
-				background-color: #fefefe; line-height: 40px; text-align: center; text-transform: uppercase; font-size: 10pt;
+				background-color: #fefefe; line-height: 40px; text-align: center; text-transform: uppercase; font-size: 10pt; vertical-align: middle;
 				.left {float:left; background-color: #fafafa; height:40px; width:50%; color:#a5609e;}
+				.left.double {line-height: normal}
 				.right {float:right; width:50%; color: @accent_color;}
 				.right:hover {text-decoration: underline;}
 			}
@@ -303,3 +304,7 @@ background-position: 0 -26px
 .email_confirm {display:none}
 .formHint {display:block; position: absolute; width:200px; height: 29px; line-height: 29px; background: transparent url(/images/hint_arrow.png) no-repeat; margin-left:500px; padding-left:50px;  opacity: 0; }
   
+ /* SCROLL TO BACK */
+#back_to_top { position: fixed; right: 15px; bottom: 15px; width: 55px; opacity: 0.75; display: none; z-index: 150000; cursor: pointer;}
+#back_to_top img { opacity: 0.95;}
+#back_to_top:hover { position: fixed; right: 15px; bottom: 15px; width: 55px; background-color: rgba(239,67,67,1);}

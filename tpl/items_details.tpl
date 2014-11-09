@@ -8,7 +8,7 @@
 			<?= $tpl[variants] ?>		
 			<br class='clearBoth'>
 			<div class='price'>
-				Цена: <b><?= $tpl[item][price] ?></b> грн
+				Цена: <b><?= ( $tpl[item][price_promo]>0 ? $tpl[item][price_promo] :  $tpl[item][price] ) ?></b> грн
 			</div>
 			<?= $tpl[add_button] ?>
 		<? } else  { ?>
@@ -45,11 +45,6 @@
 		<?= $tpl[similar] ?>
 	</div>
 		
-	
-	<script type="text/javascript">
-		$(function() {
-			$(".images a").attr('rel','gallery').fancybox();
-		})
-	</script>
+
 </div>
 

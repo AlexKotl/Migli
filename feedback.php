@@ -39,9 +39,13 @@
 			$row_comment[comment] = str_replace("\n", '<br>', $row_comment[comment]);
 			$row_comment[reply_text] = str_replace("\n", '<br>', $row_comment[reply_text]);
 			$nickname = $row_comment[name];
+			$filename = "upload/feedback/{$row_comment[id]}.jpg";
+			$image = '';
+			if (file_exists($filename)) $image = "<br><br><a href='/$filename' class='gallery'><img src='/img.php?file={$filename}&width=300'></a>";
+			
 			$tpl[content] .= "<div class='comment'>
 				<div class='header'><div class='avatara a".CComments::stringToNumber($nickname,24)." c".CComments::stringToNumber($nickname,9)."'></div> ".$nickname." <div class='date'>".date('d.m.Y',$row_comment[timestamp])."</div></div>
-				<div class='content' style='width:97%'>$row_comment[comment]</div>
+				<div class='content' style='width:97%'>$row_comment[comment] $image </div>
 				</div>";
 			if ($row_comment[reply_text]!='') $tpl[content] .= "
 				<div class='comment reply'>
