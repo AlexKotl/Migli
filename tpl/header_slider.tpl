@@ -4,6 +4,7 @@
 				<!-- <img src='/img/stuff/slider.jpg'> -->
 				
 				<div id="slides">
+					<a href='/store/Aksessuary-2/Ugolki-dlya-bluz-13'><img src="/img/slider/ugolki.jpg" alt=''></a>
 					<a href='/store/Kantselyariya-7/Bloknoty-25'><img src="/img/slider/1.jpg" alt=''></a>
 					<a href='/store/Aksessuary-2/Ochki-38'><img src="/img/slider/2.jpg" alt=''></a>
 					<a href='/store/Odejda-6/Hand-made-43'><img src="/img/slider/3.jpg" alt=''></a>

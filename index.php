@@ -56,6 +56,11 @@
 		$tpl[tags] .= "<a href='".format_url('tag',$k)."' class='size{$pos}' title='{$k} - {$v}'>".mb_convert_case($k, MB_CASE_TITLE, "UTF-8")."</a>";
 	}
 	
+	$res = $db->query("select * from comments where parent_id=0 and item_id='-1' and flag=1 order by rand() limit 1 ");
+	while ($row=$db->fetch($res)) {
+		$tpl[last_feedbacks][] = $row;
+	}
+	
 	$tpl[left_menu] = get_tpl('left_menu.tpl');
 	
 	// include module

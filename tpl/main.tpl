@@ -93,7 +93,7 @@
 			<div class='social'>
 				Мы в соц сетях
 				<a class='fb' href='https://vk.com/figlimiglishop'><i class='fa fa-vk fa-2x'></i></a>
-				<a class='fb' href='https://www.facebook.com/groups/289982164514937/'><i class='fa fa-facebook fa-2x'></i></a>
+				<a class='fb' href='https://www.facebook.com/FigliMigliTopShop'><i class='fa fa-facebook fa-2x'></i></a>
 				<a class='fb'><i class='fa fa-twitter fa-2x'></i></a>
 				<a class='fb' href='http://instagram.com/figli_migli_topshop'><i class='fa fa-instagram fa-2x'></i></a>
 				<a class='fb' href='https://plus.google.com/103126288156380874977/posts'><i class='fa fa-google-plus fa-2x'></i></a>

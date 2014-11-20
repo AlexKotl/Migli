@@ -5,6 +5,10 @@
 			</ul>
 			
 			<h3><a href='/feedback'>Отзывы о нас</a></h3>
+			<? foreach ($tpl[last_feedbacks] as $row) { ?>
+				<div class='feedback'> <?= str_replace("\n", "<br>", $row[comment]); ?> </div>
+			<? } ?>
+			<a href='/feedback'><small>Читать все отзывы</small></a>
 			
 			<br><br>
 			<h3>Поиск по тэгам</h3>

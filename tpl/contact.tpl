@@ -11,7 +11,7 @@
 <br>(093) 673 94 83
 
 </div>
-<p>Адрес: Киев, ул. Петрозаводская 2а, офис 406
+<p>Адрес: Киев, ул. Петрозаводская (Григория Кирпы) 2а, офис 406
 
 <form class='contactForm commonForm' action='/contacts' method='post' style='clear:both'>
 			<table>

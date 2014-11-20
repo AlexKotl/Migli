@@ -38,9 +38,9 @@ $(function() {
 		width: 468,
 		height: 408,
 		play: {
-			active: true,
-			interval: 4000,
-			auto: true
+			active: false,
+			interval: 7000,
+			auto: false
 		}
 	});
 	
