@@ -6,12 +6,13 @@
 
 <div style='font-size:1.2em'>
 <p><a href='mailto:info@figli-migli.net'>info@figli-migli.net</a>
-<p>(093) 231 25 31	
+<p>(044) 248 28 43
+<br>(093) 231 25 31	
 <br>(066) 847 88 57 
 <br>(093) 673 94 83
 
 </div>
-<p>Адрес: Киев, ул. Петрозаводская (Григория Кирпы) 2а, офис 406
+<p>Адрес: Киев, ул. Петрозаводская (Георгия Кирпы) 2а, офис 406
 
 <form class='contactForm commonForm' action='/contacts' method='post' style='clear:both'>
 			<table>
@@ -39,7 +40,7 @@
 			</table>
 			</form>
 			
-
+<br><a href='/img/schema.jpg' class='gallery'><img src="/img/schema.jpg" alt='' style='margin:30px 0 0 92px; width:600px;'></a>
 
 
 

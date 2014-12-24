@@ -4,7 +4,7 @@
 				<?= $tpl[left_menu] ?> </ul>
 			</ul>
 			
-			<h3><a href='/feedback'>Отзывы о нас</a></h3>
+			<a href='/feedback' class='button' style='margin:30px 0 10px 0; display:block'>Отзывы о нас</a>
 			<? foreach ($tpl[last_feedbacks] as $row) { ?>
 				<div class='feedback'> <?= str_replace("\n", "<br>", $row[comment]); ?> </div>
 			<? } ?>

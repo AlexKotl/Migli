@@ -13,7 +13,7 @@
 				'comment' => $_REQUEST[comment],				
 				'timestamp' => time(),
 				'ip' => $_SERVER[REMOTE_ADDR],
-				'flag' => ($_REQUEST[item_id]==-1 ? 1 : 0),
+				'flag' => ($_REQUEST[item_id]==-1 ? 1 : 1),
 			)) or die(mysql_error());
 			mailNotification('Добавлен комментарий',$_REQUEST[comment]);
 			return true;

@@ -5,8 +5,8 @@ $(function() {
 	function refreshOrderSum() {
 		var items = 0;
 		items += parseInt($('#orderSum').attr('data-items-sum'));
-		if (items<200 && $('[name=delivery]:checked').val()=='subway') items += 30;
-		if (items<200 && $('[name=delivery]:checked').val()=='global') items += 40;
+		if (items<300 && $('[name=delivery]:checked').val()=='subway') items += 30;
+		if (items<300 && $('[name=delivery]:checked').val()=='global') items += 40;
 		$('#orderSum').html(items);
 		$('input[name=price]').val(items);
 	}
@@ -38,9 +38,9 @@ $(function() {
 		width: 468,
 		height: 408,
 		play: {
-			active: false,
+			active: true,
 			interval: 7000,
-			auto: false
+			auto: true
 		}
 	});
 	

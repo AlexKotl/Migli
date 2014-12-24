@@ -32,7 +32,7 @@ Email: {$_REQUEST[email]}
 			mailNotification('Оформлен новый заказ',$description);
 			add_log('basket', "Order submitted (ID:{$order_id})");
 			
-			send_mail($_REQUEST[email],'Заказ оформлен',"Ваш заказ оформлен. С вами в ближайшее время свяжется менеджер. \nДля оплаты товара перейдите по ссылке: \nhttp://figli-migli.net/cart?done&order=".$order_id);							
+			send_mail($_REQUEST[email],'Заказ оформлен',"Ваш заказ оформлен. С вами в ближайшее время свяжется менеджер.");							
 
 			
 			header("location: /cart?done&order=".$order_id);
@@ -43,9 +43,11 @@ Email: {$_REQUEST[email]}
 		$row = $db->get_row("select * from orders where id='".(int)$_REQUEST[order]."'");
 		
 		$tpl[content] = "<h3>Спасибо. Ваш заказ на сумму {$row[price]} грн размещен</h3>
-			Вы можете оплатить ваш заказ по ссылке ниже: <p>";
+			<p>В ближайшее время наш менеджер с вами свяжется.
+			<!-- <p>Вы можете оплатить ваш заказ по ссылке ниже: <p> -->";
 		
-		include "classes/liqpay.php";
+		/*
+include "classes/liqpay.php";
 		
 		$liqpay = new LiqPay('i97839051443', 'VT9XujjLgS3LW3o6CQTFtIUkgixS8mvoTZMZSHgb');
 		$tpl[content] .= 
@@ -58,7 +60,8 @@ Email: {$_REQUEST[email]}
 			'result_url'	 => 'http://figli-migli.net/cart?complete',
 			'language'		 => 'ru',
 			'sandbox'		 => '1',
-		));		
+		));	
+*/	
 	}
 	
 	elseif (isset($_REQUEST[complete])) {

@@ -56,7 +56,7 @@
 	function get_tpl($file) {
 		global $tpl;
 		ob_start();
-		include basename(__FILE__)."/../tpl/$file";
+		include dirname(__FILE__)."/../tpl/$file"; 
 		return ob_get_clean();
 	}
 	

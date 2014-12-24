@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	.content {width:500px; margin:20px auto;}
+	.content .main {border-radius: 5px; box-shadow: 0px 2px 6px #cfcfcf; padding:20px; font:normal 14px Arial; line-height: 20px;}
+	.footer {font:normal 11px Arial; padding:20px}
+</style>	
+	
+	
+</head>
+<body>
+
+	<div class='content'>	
+		<div class='logo'>
+			<a href='http://figli-migli.net'><img src='http://figli-migli.net/img/watermark.png' alt='Figli-Migli'></a>
+		</div>
+		
+		<div class='main' style='border-radius: 5px; box-shadow: 0px 2px 6px #cfcfcf; padding:20px; font:normal 14px Arial; line-height: 20px;'>
+			<?= $tpl[mail_content] ?>
+		</div>
+		
+		<div class='footer'>
+			Если вы в дальнейшем не желаете получать рассылку от Figli-Migli - нажмите <a href='http://figli-migli.net/unsubscribe?email=&key='>сюда</a>
+		</div>
+	</div>
+	
+	
+
+</body>
+</html>

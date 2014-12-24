@@ -25,7 +25,7 @@
 	<div class='siteHead'>
 		<div class='basket'><a href='/cart'>
 			<i class="fa fa-shopping-cart fa-lg"></i> <b>Корзина</b>
-			<br><small><?= $tpl[basket_content] ?></small></a>
+			<br><?= $tpl[basket_content] ?></a>
 			<br>
 			<a class='changeColor' style='background-color: #ff694c'></a>
 			<a class='changeColor' style='background-color: #964991'></a>
@@ -36,6 +36,10 @@
 			<a class='changeColor' style='background-color: #4b8e92'></a>
 			<a class='changeColor' style='background-color: #d1be40'></a>
 			<a class='changeColor' style='background-color: #4099d1'></a>
+			<br><br>
+			<a href='/delivery'>Доставка</a> | 
+			<a href='/payment'>Оплата</a> | 
+			<a href='/contacts'>Контакты</a> 
 		</div>
 		<div class='contacts'>
 			<i class="fa fa-phone fa-lg"></i> <b>Телефоны:</b>
@@ -46,7 +50,7 @@
 		</div>
 		<div class='contacts'>
 			<i class="fa fa-home fa-lg"></i> <b>Адрес:</b>
-			<br>Киев, Петрозаводская 2а (Григория Кирпы), <br>офис 406
+			<br><a href='/contacts' >Киев, Петрозаводская 2а <br><small>(Георгия Кирпы), офис 406</small></a>
 			<br>пн-пт 9:00-18:00
 		</div>		
 		<a href='/'><div class='siteLogo'><b>Figli-Migli</b> <span>TOPSHOP</span></div></a>
@@ -56,7 +60,7 @@
 	
 	<div class="topMenu">
 		<ul>
-			<li><a href='/'>Новинки</a></li>
+			<!-- <li><a href='/'>Новинки</a></li> -->
 			<?= $tpl[menu] ?> </ul>
 		</ul>
 	</div>
