@@ -25,6 +25,7 @@
 				<textarea name='comment' id='comment_input' placeholder='Введите ваш комментарий'></textarea> <br>
 				<div class='commentAdd' style='display:none'>
 					Ваше имя: <input type="text" name='name' value="<?= CComments::generateNick() ?>" placeholder="Ваше имя"> <br>					
+					<input type="text" name='name_confirm' value="" placeholder="Ваше имя" class='hidden'>
 				</div>
 				<input type='submit' value="Добавить" class='button' name='submit_comment'>
 			</form>

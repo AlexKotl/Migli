@@ -11,14 +11,15 @@
 	include "admin/functions.php";
 	$db = new CMysql();
 	$cbasket = new CBasket();
-	$tpl = array();
+	$tpl = array(); 
 		
 	// create menu
 	$tpl[basket_content] = ($cbasket->getItemsCount()==0 ? 'пусто' : "В корзине: <span id='basket_count'>".$cbasket->getItemsCount()."</span>");
 	$cur_parent = 0; $is_submenu_opened = false;
 	$res = $db->query("SELECT c1.id as parent_id, c1.name as parent_name, c2.id as id, c2.name as name FROM categories c1
 		left join categories c2 on c2.parent_id = c1.id
-		where c1.parent_id=0");
+		where c1.parent_id=0 and c1.flag=1 and c2.flag=1 and c1.id!=50 and c1.id!=53
+		order by parent_id");
 	while ($row=$db->fetch($res)) {
 		if ($cur_parent!=$row[parent_id] && $is_submenu_opened) {
 			$tpl[menu] .= "</ul></li>\n";

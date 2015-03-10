@@ -61,12 +61,13 @@
 		// ADD ITEM
 		if ($_GET[action]=='write') {
 			$hide_watermark = ','.implode(',',array_keys($_REQUEST[hide_watermark])).',';
-			if ($id==0) {
-				if ($_REQUEST[name]=='') die('Enter name');
+			if ($_REQUEST[name]=='' || $_REQUEST[description]=='') die('Enter name');
+			
+			if ($id==0) {				
 				$_REQUEST[tags] = mb_convert_case($_REQUEST[tags], MB_CASE_LOWER, "UTF-8");
 				$db->insert('items', array(
 					'name', 'stock', 'description', 'stock_count', 'variants', 
-					'category_id' => $_REQUEST[category_id], 'price', 'price_promo', 
+					'category_id' => $_REQUEST[item_cat], 'price', 'price_promo', 
 					'flag' => 1, 'hide_watermark' => $hide_watermark, 'ribbon', 'tags',
 				)) or die(mysql_error());
 				$id = $db->last_insert_id('items');
@@ -76,7 +77,7 @@
 			}
 			else {
 				$db->update('items', $id, array(
-					'name', 'stock', 'description', 'variants', 'stock_count', 'price', 'price_promo', 'hide_watermark' => $hide_watermark, 'ribbon', 'tags'
+					'name', 'stock', 'description', 'variants', 'stock_count', 'price', 'price_promo', 'hide_watermark' => $hide_watermark, 'ribbon', 'tags', 'category_id' => $_REQUEST[item_cat]
 				)) or die(mysql_error());
 				
 				// fix first image
@@ -122,6 +123,16 @@
 					<a href='?module=$module&action=$_REQUEST[action]&make_main=$i&id=$id&category_id=$_REQUEST[category_id]'>[Сделать главной]</a>
 					<label style='margin-left:30px; display:inline'><input type='checkbox' name='hide_watermark[$i]' ".(strpos($row[hide_watermark],",{$i},")!==false ? 'checked' : '')."> Не накладывать лого</label>
 					<p>";
+			
+			// categories list
+			$res_cat = $db->query("select *, (select name from categories where c1.parent_id=id) as parent_name from categories as c1 where flag=1 and parent_id>0 order by parent_id, name");
+			while ($row_cat=$db->fetch($res_cat)) {
+				if ($prev_parent!=$row_cat[parent_name]) {
+					$categories_select .= "</optgroup><optgroup label='{$row_cat[parent_name]}'>";
+					$prev_parent = $row_cat[parent_name];
+				}
+				$categories_select .= "<option value='{$row_cat[id]}' ".($row[category_id]==$row_cat[id] || ($row[category_id]=='' && $_REQUEST[category_id]==$row_cat[id]) ? 'selected' : '').">{$row_cat[name]}</option>";
+			}
 			
 			$content .= "
 			
@@ -172,6 +183,12 @@
 			    <label class='control-label' for='inputEmail'>Тэги</label>
 			    <div class='controls'>
 			      <input type='text' id='inputEmail' name='tags' placeholder='' value='$row[tags]'>
+			    </div>
+			  </div>
+			  <div class='control-group'>
+			    <label class='control-label' for='inputEmail'>Код товара</label>
+			    <div class='controls'>
+			      <select name='item_cat'>{$categories_select}</select>
 			    </div>
 			  </div>
 			  <div class='control-group'>

@@ -61,7 +61,7 @@
 			header("location: ".$uri[0]."?comment_result=".$res, true);
 		}
 		if (isset($_REQUEST[comment_result])) {
-			if ($_REQUEST[comment_result]==1) $tpl[sys_message] = "Спасибо, ваш комментарий будет опубликован после проверки.";
+			if ($_REQUEST[comment_result]==1) $tpl[sys_message] = "Спасибо, ваш комментарий опубликован.";
 			else $tpl[sys_message] = "<!--error-->Комментарий слишком короткий";
 		}
 		

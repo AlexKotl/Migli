@@ -57,7 +57,7 @@
 				while ($row=$db->fetch($res)) {
 					$cmail = new CMail('html');
 					$cmail->to = $row[email];
-					$cmail->subject = "Новости Figli-Migli";
+					$cmail->subject = $_REQUEST[title];
 					$cmail->message = $message;
 					$cmail->send();
 	

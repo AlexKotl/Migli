@@ -40,7 +40,8 @@
 			</table>
 			</form>
 			
-<br><a href='/img/schema.jpg' class='gallery'><img src="/img/schema.jpg" alt='' style='margin:30px 0 0 92px; width:600px;'></a>
+<br><a href='/img/schema.jpg' class='gallery'><img src="/img/schema.jpg" alt='' style='margin:30px 0 0 0px; width:600px;'></a>
+<br/><img src="/img/building.jpg" alt='' style='margin:30px 0 0 92px; width:460px;'>
 
 
 

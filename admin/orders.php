@@ -5,7 +5,8 @@
 		$content .= "
 			<a href='?module=$module&action=&status=2' class='btn btn-warning pull-right btn-small' style='margin-left:10px'>Новые</a> 
 			<a href='?module=$module&action=&status=1' class='btn btn-success pull-right btn-small' style='margin-left:10px'>Выполненные</a>
-			<a href='?module=$module&action=&status=3' class='btn btn-danger pull-right btn-small'>Отклоненные</a>
+			<a href='?module=$module&action=&status=3' class='btn btn-danger pull-right btn-small' style='margin-left:10px'>Отклоненные</a>
+			<a href='?module=$module&action=statistics' class='btn pull-right btn-small'>Статистика</a>
 			<br/><br/>";
 		
 		if ($_GET[action]=='flag') {
@@ -66,6 +67,14 @@
 				<a href='?module=$module&id=$id&action=flag&flag=3' class='btn btn-danger'>Отклонить заказ</a>
 				<a href='?module=$module&id=$id&action=flag&flag=1' class='btn btn-success'>Заказ выполнен</a>";
 			
+		}
+		
+		// STATISTICS
+		if ($_GET[action]=='statistics') {
+			$res = $db->query("SELECT sum(price) as total, FROM_UNIXTIME(timestamp,'%Y-%m') as month from orders where status=1 or status=2 group by month");
+			while ($row=$db->fetch($res)) {
+				$content .= "<br>$row[month]: <b>".number_format($row[total]).'</b> грн';
+			}
 		}
 	}
 ?>

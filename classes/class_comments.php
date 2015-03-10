@@ -3,6 +3,11 @@
 		public function submit() {
 			$_REQUEST[comment] = strip_tags($_REQUEST[comment]);
 			if (strlen($_REQUEST[comment])<5) return false;
+			if ($_REQUEST[comment]!=strip_tags($_REQUEST[comment]) || strpos($_REQUEST[comment],'http')!==false || $_REQUEST[name_confirm]!='') {
+				//mailNotification('Комментарий заблокирован', 'Комментарий: '.strip_tags($_REQUEST[comment]));
+				add_log('comments', "Comment blocked: ".addslashes($_REQUEST[comment]));
+				return true;
+			}
 			$_REQUEST[name] = str_replace(array('"',"'"),'',$_REQUEST[name]);
 			if (trim($_REQUEST[name])=='') $_REQUEST[name] = self::generateNick();
 			CMysql::insert('comments', array(
