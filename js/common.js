@@ -1,12 +1,12 @@
 $(function() {
 
-	
+
 	// BASKET FUNCTIONS
 	function refreshOrderSum() {
 		var items = 0;
 		items += parseInt($('#orderSum').attr('data-items-sum'));
-		if (items<500 && $('[name=delivery]:checked').val()=='subway') items += 30;
-		if (items<500 && $('[name=delivery]:checked').val()=='global') items += 40;
+		//if (items<500 && $('[name=delivery]:checked').val()=='subway') items += 30;
+		//if (items<500 && $('[name=delivery]:checked').val()=='global') items += 40;
 		$('#orderSum').html(items);
 		$('input[name=price]').val(items);
 	}

@@ -18,7 +18,7 @@
 	$cur_parent = 0; $is_submenu_opened = false;
 	$res = $db->query("SELECT c1.id as parent_id, c1.name as parent_name, c2.id as id, c2.name as name FROM categories c1
 		left join categories c2 on c2.parent_id = c1.id
-		where c1.parent_id=0 and c1.flag=1 and c2.flag=1 and c1.id!=50 and c1.id!=53
+		where c1.parent_id=0 and c1.flag=1 and c2.flag=1 
 		order by parent_id");
 	while ($row=$db->fetch($res)) {
 		if ($cur_parent!=$row[parent_id] && $is_submenu_opened) {
@@ -28,6 +28,7 @@
 		}
 		
 		if ($row[id]==NULL) {
+			//if ($row[parent_id]!=50 && $row[parent_id]!=53) 
 			$tpl[menu] .= "<li><a href='".format_url('category',$row)."'>$row[parent_name]</a></li>\n";
 			$tpl[left_menu] .= "<li><a href=''><i class='fa fa-plus-circle'></i> $row[parent_name]</a></li>";
 		}

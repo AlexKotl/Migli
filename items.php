@@ -12,7 +12,7 @@
 			.($category>0 ? "and items.category_id='$category'" : '')
 			.($category_base>0 ? "and categories.parent_id='$category_base'" : '')
 			. " order by items.flag=2, items.id desc"
-			.($category==0 && $category_base==0 ? " limit 21" : '')
+			.($category==0 && $category_base==0 && $_REQUEST[tag]=='' ? " limit 21" : '')
 		) or die(mysql_error());
 		
 		while ($row=$db->fetch($res)) {

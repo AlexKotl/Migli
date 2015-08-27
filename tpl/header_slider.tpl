@@ -4,7 +4,8 @@
 				<!-- <img src='/img/stuff/slider.jpg'> -->
 				
 				<div id="slides">
-					<a><img src="/img/slider/camb.jpg" alt=''></a>
+					<a><img src="/img/slider/22-24.jpg" alt=''></a>
+					<a href='/store/Odejda-6/Parnaya-odejda-59'><img src="/img/slider/para.jpg" alt=''></a>
 					<a><img src="/img/slider/delivery.jpg" alt=''></a>
 					<a><img src="/img/slider/nal.jpg" alt=''></a>
 					<a href='/store/Odejda-6/Hand-made-43'><img src="/img/slider/3.jpg" alt=''></a>
@@ -16,7 +17,7 @@
 					$i++;
 					if ($i>9) continue;
 				?>
-					<?= "<a class='item' href='".format_url('category',$menu)."'>" ?>
+					<?= "<a class='item' href='".($menu[id]==8 ? '/store/Ochki-8/Solntsezaschitnye-ochki-38' : format_url('category',$menu))."'>" ?>
 						<div class=''><?= $menu[name] ?></div>
 						<?= "<img src='/img/categories/$menu[id].jpg' alt=''/>" ?>
 					</a>

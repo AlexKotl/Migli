@@ -67,6 +67,7 @@
 				$_REQUEST[tags] = mb_convert_case($_REQUEST[tags], MB_CASE_LOWER, "UTF-8");
 				$db->insert('items', array(
 					'name', 'stock', 'description', 'stock_count', 'variants', 
+					'name_ua', 'description_ua', 'variants_ua',
 					'category_id' => $_REQUEST[item_cat], 'price', 'price_promo', 
 					'flag' => 1, 'hide_watermark' => $hide_watermark, 'ribbon', 'tags',
 				)) or die(mysql_error());
@@ -77,7 +78,7 @@
 			}
 			else {
 				$db->update('items', $id, array(
-					'name', 'stock', 'description', 'variants', 'stock_count', 'price', 'price_promo', 'hide_watermark' => $hide_watermark, 'ribbon', 'tags', 'category_id' => $_REQUEST[item_cat]
+					'name', 'stock', 'description', 'variants', 'name_ua', 'description_ua', 'variants_ua', 'stock_count', 'price', 'price_promo', 'hide_watermark' => $hide_watermark, 'ribbon', 'tags', 'category_id' => $_REQUEST[item_cat]
 				)) or die(mysql_error());
 				
 				// fix first image
@@ -93,7 +94,8 @@
 			foreach (explode('|',$_POST[files_added]) as $f) {
 				if (trim($f)=='') continue;
 				do {$i++;} while (file_exists("../upload/items/$id"."_$i.jpg"));
-				copy("inc/fileuploader/files/$f", "../upload/items/$id"."_$i.jpg");
+				//copy("inc/fileuploader/files/$f", "../upload/items/$id"."_$i.jpg");
+				resize_image("inc/fileuploader/files/$f", "../upload/items/$id"."_$i.jpg", $settings[max_upload_width], $settings[max_upload_height]) or die("Cannor resize inc/fileuploader/files/$f -> ../upload/items/$id"."_$i.jpg $settings[max_upload_width] $settings[max_upload_height]");
 			}
 			
 			CCache::updateTags();
@@ -140,19 +142,22 @@
 			  <div class='control-group'>
 			    <label class='control-label' for='inputEmail'>Название</label>
 			    <div class='controls'>
-			      <input type='text' id='inputEmail' name='name' placeholder='' value='$row[name]'>
+			      <input type='text' id='inputEmail' name='name' placeholder='Название' value='$row[name]'>
+			      <input type='text' id='inputEmail' name='name_ua' placeholder='Назва' value='$row[name_ua]'>
 			    </div>
 			  </div>
 			  <div class='control-group'>
 			    <label class='control-label' for='inputEmail'>Описание</label>
 			    <div class='controls'>
-			      <textarea name='description' rows=10>$row[description]</textarea>
+			      <textarea name='description' rows=10 placeholder='Описание'>$row[description]</textarea>
+			      <textarea name='description_ua' rows=10 placeholder='Опис'>$row[description_ua]</textarea>
 			    </div>
 			  </div>
 			  <div class='control-group'>
 			    <label class='control-label' for='inputEmail'>Варианты<br><small>по одному на каждой строке</small></label>
 			    <div class='controls'>
-			      <textarea name='variants' rows=3>$row[variants]</textarea>
+			      <textarea name='variants' rows=3 placeholder='Варианты'>$row[variants]</textarea>
+			      <textarea name='variants_ua' rows=3 placeholder='Варіанти'>$row[variants_ua]</textarea>
 			    </div>
 			  </div>
 			  <div class='control-group'>
@@ -186,7 +191,7 @@
 			    </div>
 			  </div>
 			  <div class='control-group'>
-			    <label class='control-label' for='inputEmail'>Код товара</label>
+			    <label class='control-label' for='inputEmail'>Категория</label>
 			    <div class='controls'>
 			      <select name='item_cat'>{$categories_select}</select>
 			    </div>

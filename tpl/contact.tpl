@@ -7,9 +7,11 @@
 <div style='font-size:1.2em'>
 <p><a href='mailto:info@figli-migli.net'>info@figli-migli.net</a>
 <p>(044) 248 28 43
-<br>(093) 231 25 31	
+
+<br>(093) 231 25 31
 <br>(066) 847 88 57 
-<br>(093) 673 94 83
+<br>(093) 673 94 83 - <span style="color:#b245bd; font-weight:bolder; font-size:0.8em">Viber</span>
+
 
 </div>
 <p>Адрес: Киев, ул. Петрозаводская (Георгия Кирпы) 2а, офис 406

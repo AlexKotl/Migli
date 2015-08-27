@@ -82,4 +82,61 @@
 		mail($to, $subject, $message, "From: \"Figli-Migli topsho\" <info@figli-migli.net>");
 	}
 	
+	// функция обрезает изображение, если задано разрешение, и уменьшает до нужных границ
+	function resize_image($filename, $dest_file, $width_limit, $height_limit, $fixed_asp=0, $params=0) {
+		//include_once "inc/imagecreatefrombmp.php";
+		$image_src = @ImageCreateFromJpeg($filename);
+		if ($image_src==false) $image_src = @imagecreatefrompng($filename);
+		if ($image_src==false) $image_src = @imagecreatefromgif($filename);
+		//if ($image_src==false) $image_src = ImageCreateFromBMP($filename);
+		if ($image_src==false) return false;
+		//$width_limit=$preview_image_width; $height_limit=$preview_image_height;
+		list($src_width, $src_height) = getimagesize($filename);
+		$img_asp = $src_width / $src_height;
+		
+		// обрезаем изображение
+		if ($fixed_asp!=0) {
+			if ($img_asp > $fixed_asp) {// зашкал по ширине
+				$side_crop = ($src_width - $src_height*$fixed_asp) / 2;  // кол-во пикселей для обрезки по сторонам
+				imagecopyresampled($image_src, $image_src, 0, 0, $side_crop, 0, $src_height*$fixed_asp, $src_height, $src_height*$fixed_asp, $src_height);
+				$src_width = $src_height*$fixed_asp; // для дальнейшего использования
+			}
+			else {// зашкал по высоте
+				$side_crop = ($src_height - $src_width / $fixed_asp) / 2;  // кол-во пикселей для обрезки сверху
+				imagecopyresampled($image_src, $image_src, 0, 0, 0, $side_crop, $src_width, $src_width/$fixed_asp, $src_width, $src_width/$fixed_asp);
+				$src_height = $src_width / $fixed_asp; // для дальнейшего использования
+			}
+			$img_asp = $src_width / $src_height;
+		}
+		
+		// подгоняем под границы
+		$img_asp = $src_width / $src_height;
+		$lim_asp = $width_limit / $height_limit;
+		
+		if ($img_asp >= $lim_asp && $src_width>$width_limit) {       // если зашкаливает ширина
+			$new_width = $width_limit;
+			$new_height = $src_height * $new_width / $src_width;
+		}
+		else if ($img_asp < $lim_asp && $src_height>$height_limit) { // если зашкаливает высота
+			$new_height = $height_limit;
+			$new_width = $src_width * $new_height / $src_height;
+		}
+		else {                                                       // если ничего не зашкаливает
+			$new_width = $src_width;
+			$new_height = $src_height;
+		}
+		
+		//if (($new_height>=$src_height || $new_width>=$src_width) && $fixed_asp==0) return false;
+		
+		$image_dest = imagecreatetruecolor($new_width, $new_height);
+		imagecopyresampled($image_dest, $image_src, 0, 0, 0, 0, $new_width, $new_height, $src_width, $src_height) or die ("Image resize failed");
+		if ($params[angle]!='') $image_dest = imagerotate($image_dest, $params[angle], 0);
+		$r = ImageJpeg($image_dest,$dest_file,80) or die("Cannot output image to file");
+		
+		// чистим память
+		imagedestroy($image_src);
+		imagedestroy($image_dest);
+		return $r;
+	}
+	
 ?>

@@ -32,7 +32,9 @@ Email: {$_REQUEST[email]}
 			mailNotification('Оформлен новый заказ',$description);
 			add_log('basket', "Order submitted (ID:{$order_id})");
 			
-			send_mail($_REQUEST[email],'Заказ оформлен',"Ваш заказ оформлен. С вами в ближайшее время свяжется менеджер.");							
+			send_mail($_REQUEST[email],'Заказ оформлен',"Ваш заказ оформлен. С вами в ближайшее время свяжется менеджер. \n".
+				"Номер вашего заказа: 021{$order_id} \n\n".
+				"С уважением, Figli-Migli topshop");							
 
 			
 			header("location: /cart?done&order=".$order_id);

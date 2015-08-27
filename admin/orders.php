@@ -31,7 +31,7 @@
 				else $delivery = $description[delivery_address];
 				$content .= "<tr>
 					<td>$row[id]</td>
-					<td>$description[name]</td>
+					<td>$description[name] $description[surname]</td>
 					<td>$description[phone]</td>
 				    <td>$delivery</td>
 				    <td>$row[price] грн</td>
@@ -50,7 +50,7 @@
 			$row[description] = unserialize($row[description]);
 			$content .= "<div class='page-header'>  <h3>Детали заказа</h3></div> 
 				<table class='table table-striped table-hover table-bordered'><tbody>
-				<tr><td>Имя</td><td>".$row[description][name]."</td><tr>
+				<tr><td>Имя</td><td>".$row[description][name]." ".$row[description][surname]."</td><tr>
 				<tr><td>Email</td><td>".$row[description][email]."</td><tr>
 				<tr><td>Телефон</td><td>".$row[description][phone]."</td><tr>
 				<tr><td>Способ доставки</td><td>".$row[description][delivery]."</td><tr>
