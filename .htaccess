@@ -31,5 +31,5 @@
 	RewriteRule ^big_image/([0-9]+)/([0-9]+)/(.*).jpg$ img.php?file=upload/items/$1_$2.jpg&width=1000 [L,QSA]
 	RewriteRule ^medium_image/([0-9]+)/([0-9]+)/(.*).jpg$ img.php?file=upload/items/$1_$2.jpg&width=360 [L,QSA]
 	RewriteRule ^square_thumb/([0-9]+)/([0-9]+).jpg$ img.php?file=upload/items/$1_$2.jpg&width=100&fixed_asp=1 [L,QSA]
-	RewriteRule ^list_thumb/([0-9]+)/(.*).jpg$ img.php?file=upload/items/$1_1.jpg&width=230&fixed_asp=1.29213 [L,QSA]
+	RewriteRule ^list_thumb/([0-9]+)/(.*).jpg$ img.php?file=upload/items/$1_1.jpg&width=460&fixed_asp=1.29213 [L,QSA]
    

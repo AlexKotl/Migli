@@ -76,7 +76,7 @@
 
 	imagecopyresampled($image_dest, $image_src, 0, 0, 0, 0, $new_width, $new_height, $src_width, $src_height);
 	// если картинка большая то добавляем копирайты
-	if ($new_width>400 && $new_height>300 && !isset($_GET[no_watermark])) {
+	if ($new_width>500 && $new_height>300 && !isset($_GET[no_watermark])) {
 		$logo_image = ImageCreateFromPNG("img/watermark.png");
 		imagecopy($image_dest, $logo_image, $new_width-290, $new_height-70, 0, 0, 270, 56);
 	}

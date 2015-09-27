@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<title><?= $tpl[site_title] ?></title>	
 	<meta name='description' content="<?= $tpl[site_description] ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<link href="/css/style.less" rel="stylesheet/less">
 	<link href="/css/jquery.fancybox.css" rel="stylesheet">
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
@@ -23,6 +24,7 @@
 </head>
 <body>
 	<div class='siteHead'>
+		<a href='/'><div class='siteLogo'><b>Figli-Migli</b> <span>TOPSHOP</span></div></a>
 		<div class='basket'><a href='/cart'>
 			<i class="fa fa-shopping-cart fa-lg"></i> <b>Корзина</b>
 			<br><?= $tpl[basket_content] ?></a>
@@ -56,7 +58,7 @@
 			<br>пн-пт 10:00-17:00
 			<!-- <br>сб - по договоренности -->
 		</div>		
-		<a href='/'><div class='siteLogo'><b>Figli-Migli</b> <span>TOPSHOP</span></div></a>
+		
 		<br class='clearBoth'>
 		
 	</div>
@@ -64,6 +66,11 @@
 	<div class="topMenu">
 		<ul>
 			<!-- <li><a href='/'>Новинки</a></li> -->
+			<li><a href='/'>Новинки</a></li> 
+			<li><a href='/'>Новинки</a></li> 
+			<li><a href='/'>Новинки</a></li> 
+			<li><a href='/'>Новинки</a></li> 
+			<li><a href='/'>Новинки</a></li> 
 			<?= $tpl[menu] ?> </ul>
 		</ul>
 	</div>

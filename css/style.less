@@ -7,8 +7,9 @@ li {list-style: none;}
 a {color:#10388f; text-decoration: none; cursor: pointer}
 a:hover {text-decoration: none}
 .colored {color:#c23b8e}
-.mainContent {width:910px; margin:auto; background-color: white; padding: 20px 20px 100px 20px; }
+.mainContent {max-width:910px; margin:auto; background-color: white; padding: 20px 20px 100px 20px; }
 .clearBoth {clear:both;}
+.centeredText {text-align: center;}
 
 .sys_message {background-color: #c8f1c4; border-radius: 5px; padding:10px 20px; font:normal 14px Arial}
 .sys_message.error {background-color: #f2dcdc}
@@ -30,9 +31,9 @@ table.simpleTable {width: 100%; border-collapse:collapse; }
 .button:hover {background-color: lighten(@accent_color, 15%)}
 
 .siteHead {
-	margin:auto; width: @site_width; padding:12px 0; font-size: 10.5pt;
-	.basket {float:right; width:200px; font-size: 0.9em;}
-	.contacts {float:right; width:200px}
+	margin:auto; max-width: @site_width; padding:12px 0; font-size: 10.5pt;
+	.basket {float:right; width:200px; font-size: 0.9em; display: none;}
+	.contacts {float:right; width:200px; display: none;}
 	.siteLogo {
 		float:left; color:#969696; 
 		span {font-size: 1.5em;}
@@ -44,9 +45,9 @@ table.simpleTable {width: 100%; border-collapse:collapse; }
 }
 
 .topMenu {
-	width:100%; background-color: @accent_color; height: 45px;
+	width:100%; background-color: @accent_color;
 	ul {
-		margin:auto; width: @site_width + 30; color:white; text-align: center;
+		margin:auto; max-width: @site_width + 30; color:white; text-align: center;
 		li {display: inline-block;}
 		li a {line-height: 45px; height:45px; display: inline-block; font-size:10.5pt; color:white; width:auto; padding:0 8px;}
 		li a:hover {background-color: lighten(@accent_color,5%)}
@@ -56,7 +57,7 @@ table.simpleTable {width: 100%; border-collapse:collapse; }
 .navigationBar {
 	background-color: #F9F9F9; box-shadow: inset 0px 0px 5px #e1e1e1;
 	.content {
-		margin:auto; width: @site_width - 10; padding:7px 0; font-size: 8.8pt; 
+		margin:auto; max-width: @site_width - 10; padding:7px 0; font-size: 8.8pt; 
 		a {color:#888888;}		
 		a:hover {text-decoration: underline; color:#333333}
 		a:before {content: " » " ;  display: inline-block; margin:0 5px}
@@ -67,7 +68,8 @@ table.simpleTable {width: 100%; border-collapse:collapse; }
 .sliderBlock {
 	background: #faf8f4  url(/img/back.jpg) repeat; 
 	box-shadow: inset 5px 0px 7px #c1c1c1;
-	.content {width: @site_width; margin: auto;  padding:30px 15px;}
+	display: none;
+	.content {max-width: @site_width; margin: auto;  padding:30px 15px;}
 	.slider {float:left}
 	.menuGallery {
 		float:right; width:480px;
@@ -82,9 +84,9 @@ table.simpleTable {width: 100%; border-collapse:collapse; }
 }
 
 .mainContent {
-	width: @site_width; margin:auto;
+	max-width: @site_width; margin:auto;
 	.leftMenu {
-		float:left; width:200px; 
+		float:left; width:20%; box-sizing: border-box; display: none;
 		h3 {text-transform: uppercase; font-size: 0.95em;}
 		.subscribe {
 			text-align: center;
@@ -109,12 +111,13 @@ table.simpleTable {width: 100%; border-collapse:collapse; }
 		.feedback {background-color: #fbfbfb; border-radius: 3px; padding:5px 10px; font-size: 0.8em; margin:5px 0; border:1px solid #f5f5f5; overflow: hidden;}
 	}
 	.content {
-		float:right; width: @site_width - 210; padding-left: 10px;
+		float:right; width: 100%;  box-sizing: border-box;
 		.itemsList .item {
-			float:left; width:230px; border:1px solid #f5f5f5; border-radius: 3px; font-weight: bolder; font-size: 10.6pt; text-align: center; overflow: hidden; margin:20px 0 0 18px;
+			display: inline-block; width:100%; border:1px solid #f5f5f5; border-radius: 3px; font-weight: bolder; font-size: 10.6pt; text-align: center; overflow: hidden; margin:20px 9px 0 0px; box-sizing: border-box;
 			.header {height:48px; color:#333333; display: block;}
 			.header span { display:inline-block; vertical-align:middle; padding:0 17px;}
-			.image {height:178px}
+			.image  {display: inline-block}
+			.image img {display: block; width: 100%; height: auto;}
 			.footer {
 				background-color: #fefefe; line-height: 40px; text-align: center; text-transform: uppercase; font-size: 10pt; vertical-align: middle;
 				.left {float:left; background-color: #fafafa; height:40px; width:50%; color:#a5609e;}
@@ -156,22 +159,22 @@ table.simpleTable {width: 100%; border-collapse:collapse; }
 	font-size: 0.8em;
 	h4 {color:#b4b4b4; border-bottom:1px dotted #b4b4b4; font-size: 1em; padding-bottom: 7px; clear: both}
 	.description {
-		float:right; width:330px;
-		.price {float:left; width:42%; height: 48px; line-height: 48px; border:1px solid black; text-align: center; font-size: 1.2em; color:#999999; border-right: 0px; margin-top:15px}
+		float:right; width:100%; box-sizing: border-box;
+		.price {float:left; width:42%; height: 48px; line-height: 48px; border:1px solid black; text-align: center; font-size: 1.2em; color:#999999; border-right: 0px; margin-top:15px; box-sizing: border-box;}
 		.price b {color:#333333; font-size: 1.4em;}
 		.unavailable {font-size: 1.4em; color: #ba1818; margin:10px 0;}
 		.add {
 			float:left; width:57%; height:48px; line-height: 48px; border:1px solid @accent_color; display: block; background-color: @accent_color; 
-			color:white; text-align: center; font-size: 1.2em; margin-top:15px;
+			color:white; text-align: center; font-size: 1.2em; margin-top:15px; box-sizing: border-box;
 			i {color: white;}
 			&:hover {background-color: white; color: @accent_color;}
 			&:hover i {color: @accent_color;}
 		}
 	}
 	.images {
-		float:left; width:380px; margin-left:20px;
+		float:left; width:100%; box-sizing: border-box;
 		.bigImage {padding:9px; border:1px solid #e7e7e7; display: block; margin-bottom: 10px;}
-		.bigImage img {display: block;}
+		.bigImage img {display: block; width: 100%;}
 		.smallImage {display: block; border:1px solid #e7e7e7; width:100px; padding:12px; float:left; }
 		.smallImage img {display: block;}
 		.smallImage:hover {background-color: #f9f9f9;}
@@ -190,7 +193,7 @@ table.simpleTable {width: 100%; border-collapse:collapse; }
 
 .siteFooter {
 	font-size: 8pt; color: #9c9c9c; background-color: #FAFAFA; box-shadow: inset 5px 0px 7px #c1c1c1;
-	.content {width: @site_width; margin: auto; padding:20px 0; margin-top: 100px;}
+	.content {max-width: @site_width; margin: auto; padding:20px 0; margin-top: 100px;}
 	.social {
 		text-transform: uppercase; font-size: 1.1em; float:left;
 		a {height:30px; width:36px; padding-top:4px; border-radius: 22px; border:2px solid #CBCBCB; display: inline-block; line-height: 32px; text-align: center;}
@@ -204,6 +207,8 @@ table.simpleTable {width: 100%; border-collapse:collapse; }
 	.menu {float: right; margin: 12px 111px 0 0;}
 	.copy {float:right; font-size: 1.2em; margin-top:10px;}
 }
+
+.similarItemsBlock {display: none;}
 
 .commentsBlock {	
 	.header {font-weight: bolder; line-height: 30px; margin-bottom: 5px;}
@@ -304,6 +309,54 @@ background-position: 0 -26px
 .contactForm .notFilled {border-color: #ffa08b; background-color: #ffeede}
 .email_confirm {display:none}
 .formHint {display:block; position: absolute; width:200px; height: 29px; line-height: 29px; background: transparent url(/images/hint_arrow.png) no-repeat; margin-left:500px; padding-left:50px;  opacity: 0; }
+
+@media (min-width:1200px) {	
+	.sliderBlock {display: block;}
+}
+
+@media (min-width:900px) {	
+	.siteHead {
+		.basket {display: block;}
+	}
+	
+	.itemDetails {
+		.images {
+			.bigImage img {width: auto;}
+		}
+	}
+}
+
+@media (min-width:700px) {	
+
+	.leftMenu {
+		display: block !important;
+	}
+	.content {
+		width: 80% !important;
+	}
+	
+	.siteHead {
+		.contacts {display: block;}
+	}
+	
+	.itemDetails {
+		.description {width: 45%; padding-left: 20px;}
+		.images {
+			width: 53%; padding-left: 20px;
+		}
+	}
+	
+	.similarItemsBlock {display: block;}
+}
+
+@media (min-width:520px) {	
+	.itemsList .item {width: 230px !important; margin-left: 9px !important;}
+	.itemsList .item img {}
+}
+
+
+
+
   
  /* SCROLL TO BACK */
 #back_to_top { position: fixed; right: 15px; bottom: 15px; width: 55px; opacity: 0.75; display: none; z-index: 150000; cursor: pointer;}

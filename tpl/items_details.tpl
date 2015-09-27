@@ -1,4 +1,12 @@
 <div class='itemDetails'>
+	
+	<div class='images'>
+		<?= $tpl[img_previews] ?>
+		<a href='<?= format_url('images', $tpl[item]) ?>' class='all' target="_blank">
+			<i class='fa fa-camera-retro fa-2x'></i> Все картинки
+		</a>
+	</div>
+	
 	<div class='description'>	
 		<h2><?= $tpl[title] ?></h2>
 		<h4>Описание:</h4>
@@ -29,21 +37,17 @@
 				</div>
 				<input type='submit' value="Добавить" class='button' name='submit_comment'>
 			</form>
-		</div>
-		
-		
-	</div>
-	<div class='images'>
-		<?= $tpl[img_previews] ?>
-		<a href='<?= format_url('images', $tpl[item]) ?>' class='all' target="_blank">
-			<i class='fa fa-camera-retro fa-2x'></i> Все картинки
-		</a>
+		</div>		
 	</div>
 	
+	
+	
 	<br class='clearBoth'>
-	<h4 style='margin-top:100px'>Вас может заинтересовать</h4>
-	<div class='similar itemsList'>
-		<?= $tpl[similar] ?>
+	<div class='similarItemsBlock'>
+		<h4 style='margin-top:100px'>Вас может заинтересовать</h4>
+		<div class='similar itemsList'>
+			<?= $tpl[similar] ?>
+		</div>
 	</div>
 		
 
