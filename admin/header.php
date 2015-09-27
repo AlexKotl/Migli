@@ -7,9 +7,11 @@
 	<link href="style.css" rel="stylesheet">
 	
 	<script src="/js/jquery-2.1.0.min.js"></script>
+	<script src="/admin/js/common.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/jquery.ui.widget.js"></script>
 	<script src="/js/jquery.fileupload.js"></script>
+	
 	
 	
 	

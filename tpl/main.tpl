@@ -44,16 +44,17 @@
 		<div class='contacts'>
 			<i class="fa fa-phone fa-lg"></i> <b>Телефоны:</b>
 			<br>(044) 248 28 43
-			<br>(093) 231 25 31
-			<br>(066) 847 88 57
+			<br>(093) 673 94 83
+			<!-- <br>(093) 231 25 31 -->
+			<!-- <br>(066) 847 88 57 -->
 			<br><a href='/callback' style='color:red; text-decoration:underline'>Обратный звонок</a>
 
 		</div>
 		<div class='contacts'>
 			<i class="fa fa-home fa-lg"></i> <b>Адрес:</b>
 			<br><a href='/contacts' >Киев, Петрозаводская 2а <br><small>(Георгия Кирпы), офис 406</small></a>
-			<br>пн-пт 9:00-18:00
-			<br>сб - по договоренности
+			<br>пн-пт 10:00-17:00
+			<!-- <br>сб - по договоренности -->
 		</div>		
 		<a href='/'><div class='siteLogo'><b>Figli-Migli</b> <span>TOPSHOP</span></div></a>
 		<br class='clearBoth'>

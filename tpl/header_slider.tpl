@@ -4,7 +4,6 @@
 				<!-- <img src='/img/stuff/slider.jpg'> -->
 				
 				<div id="slides">
-					<a><img src="/img/slider/22-24.jpg" alt=''></a>
 					<a href='/store/Odejda-6/Parnaya-odejda-59'><img src="/img/slider/para.jpg" alt=''></a>
 					<a><img src="/img/slider/delivery.jpg" alt=''></a>
 					<a><img src="/img/slider/nal.jpg" alt=''></a>
