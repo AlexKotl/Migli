@@ -79,7 +79,7 @@
 	}
 	
 	function send_mail($to,$subject,$message) {
-		mail($to, $subject, $message, "From: \"Figli-Migli topsho\" <info@figli-migli.net>");
+		mail($to, $subject, $message, "From: \"Figli-Migli topshop\" <info@figli-migli.net>");
 	}
 	
 	// функция обрезает изображение, если задано разрешение, и уменьшает до нужных границ

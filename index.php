@@ -64,6 +64,7 @@
 	}
 	
 	$tpl[left_menu] = get_tpl('left_menu.tpl');
+	$tpl[contact_phones] = CCache::getCache('contact_phones');
 	
 	// include module
 	$module = preg_replace('/([^a-z])/','',$_GET[module]);

@@ -4,10 +4,11 @@
 				<!-- <img src='/img/stuff/slider.jpg'> -->
 				
 				<div id="slides">
-					<a href='/store/Odejda-6/Parnaya-odejda-59'><img src="/img/slider/para.jpg" alt=''></a>
+					<a><img src="/img/slider/yu1.jpg" alt=''></a>
 					<a><img src="/img/slider/delivery.jpg" alt=''></a>
 					<a><img src="/img/slider/nal.jpg" alt=''></a>
-					<a href='/store/Odejda-6/Hand-made-43'><img src="/img/slider/3.jpg" alt=''></a>
+<!-- 					<a href='/store/Odejda-6/Hand-made-43'><img src="/img/slider/3.jpg" alt=''></a> -->
+					<a><img src="/img/slider/yu2.jpg" alt=''></a>
 				</div>
 				
 			</div>

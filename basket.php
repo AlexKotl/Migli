@@ -78,17 +78,26 @@ include "classes/liqpay.php";
 		foreach ($cbasket->getItems() as $item) {
 			$row = $db->get_row("select * from items where id='".(int)$item[id]."'");		
 			if ($row[price_promo]) $row[price] = $row[price_promo];
-			$tpl[items_sum] += $row[price];
-			$total_count += $item[count];
-			$total_amount += $item[count] * $row[price];
+			
+			if ($row[flag]==1) {
+				$tpl[items_sum] += $row[price];
+				$total_count += $item[count];
+				$total_amount += $item[count] * $row[price];
+			}
+			else {
+				$row[price] = 0;
+				$item[count] = "<b style='color:red'>Нет в наличии</b>";
+				$tpl[sys_message] .= "<!-- error --><p>Товара \"{$row[name]}\" уже нет в наличии. Удалите его, пожалуйста, из корзины. ";
+			}
+			
 			$tpl[content] .= "<tr>
 				<td><a href='".format_url('item',$row)."'><img src='/images/$row[id].jpg?width=100'></a></td>
 				<td>$row[name] ".($item[variant]!='' ? "({$item[variant]})" : '')."</td>
 				<td>$row[price] грн</td>
 				<td>
-					<a href='/ajax/index.php?module=basket&action=change_count&id=$row[id]&value=-1'><i class='fa fa-minus-square-o'></i></a>
+					<a href='/ajax/index.php?module=basket&action=change_count&id=$row[id]&value=-1' ".($row[flag]!=1 ? 'class="hidden"' : '')."><i class='fa fa-minus-square-o'></i></a>
 					<b>$item[count] </b>
-					<a href='/ajax/index.php?module=basket&action=change_count&id=$row[id]&value=1'><i class='fa fa-plus-square-o'></i></a></td>
+					<a href='/ajax/index.php?module=basket&action=change_count&id=$row[id]&value=1' ".($row[flag]!=1 ? 'class="hidden"' : '')."><i class='fa fa-plus-square-o'></i></a></td>
 				<td><a href='/ajax/index.php?module=basket&action=delete&id=$row[id]' class='delete_from_basket' title='Удалить из корзины'><img src='/img/basic/delete.png' /></a></td>
 				</tr>";
 		}

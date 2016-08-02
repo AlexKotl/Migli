@@ -58,6 +58,7 @@
 				echo "<li><a href='?module=orders&status=2'><i class='icon-list-alt'></i> Список заказов <span class='badge badge-important pull-right'>".($count>0 ? $count : '')."</span></a></li>";
 				echo "<li><a href='?module=subscribers'><i class='icon-envelope'></i> Подписчики <span class='badge badge-important pull-right'></span></a></li>" 
 				?>
+				<li><a href="?module=cache&action=edit&type=contact_phones"><i class="icon-map-marker"></i> Контактные телефоны</a></li>
 				<li><a href="?module=log"><i class="icon-eye-open"></i> История</a></li>
 				<li><a href="?module=fun"><i class="icon-thumbs-up"></i> Повышатель настроения</a></li>
 				<li><a href="?action=exit"><i class="icon-off"></i> Выход</a></li>

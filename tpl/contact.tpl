@@ -6,15 +6,19 @@
 
 <div style='font-size:1.2em'>
 <p><a href='mailto:info@figli-migli.net'>info@figli-migli.net</a>
-<p>(044) 248 28 43
-
-<!-- <br>(093) 231 25 31 -->
-<!-- <br>(066) 847 88 57 -->
-<br>(093) 673 94 83 - <span style="color:#b245bd; font-weight:bolder; font-size:0.8em">Viber</span>
-
-
+<p>
+<?= $tpl[contact_phones] ?>
+<!-- <br>(093) 673 94 83 - <span style="color:#b245bd; font-weight:bolder; font-size:0.8em">Viber</span> -->
 </div>
-<p>Адрес: Киев, ул. Петрозаводская (Георгия Кирпы) 2а, офис 406
+<p><b>Адрес:</b> 
+
+<p>Киев, Шоу-рум "11. Silver Space" 
+<br>м. Майдан Независимости, ул. Малая Житомирская, 9Б)</p>
+
+<p>Киев, ул. Артема 84, оф. 22 (пн-пт, с 9:00 - 20:00)
+	<br>(095) 566 48 59
+	<br>(066) 255 8266
+</p>
 
 <form class='contactForm commonForm' action='/contacts' method='post' style='clear:both'>
 			<table>
@@ -42,16 +46,17 @@
 			</table>
 			</form>
 			
+<!--
 <br><a href='/img/schema.jpg' class='gallery'><img src="/img/schema.jpg" alt='' style='margin:30px 0 0 0px; width:600px;'></a>
 <br/><img src="/img/building.jpg" alt='' style='margin:30px 0 0 92px; width:460px;'>
-
+-->
 
 
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <script>
 function initialize() {
-  var myLatlng = new google.maps.LatLng(50.437499, 30.490923);
-  var centerLat = new google.maps.LatLng(50.438988, 30.489893);
+  var myLatlng = new google.maps.LatLng(50.4586018,30.4868455);
+  var centerLat = new google.maps.LatLng(50.4586018,30.4868455);
   var mapOptions = {
     zoom: 15,
     center: centerLat

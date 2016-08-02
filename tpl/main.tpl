@@ -45,17 +45,16 @@
 		</div>
 		<div class='contacts'>
 			<i class="fa fa-phone fa-lg"></i> <b>Телефоны:</b>
-			<br>(044) 248 28 43
-			<br>(093) 673 94 83
-			<!-- <br>(093) 231 25 31 -->
-			<!-- <br>(066) 847 88 57 -->
+			<br> <?= $tpl[contact_phones] ?>
 			<br><a href='/callback' style='color:red; text-decoration:underline'>Обратный звонок</a>
 
 		</div>
 		<div class='contacts'>
 			<i class="fa fa-home fa-lg"></i> <b>Адрес:</b>
-			<br><a href='/contacts' >Киев, Петрозаводская 2а <br><small>(Георгия Кирпы), офис 406</small></a>
-			<br>пн-пт 10:00-17:00
+			<br><a href='/contacts' >Шоу-рум "11. Silver Space" 
+				<br><small>(м. Майдан Независимости, ул. Малая Житомирская, 9Б)</small>
+			</a>
+			<br>пн-вс 11:00-20:00
 			<!-- <br>сб - по договоренности -->
 		</div>		
 		
@@ -66,11 +65,6 @@
 	<div class="topMenu">
 		<ul>
 			<!-- <li><a href='/'>Новинки</a></li> -->
-			<li><a href='/'>Новинки</a></li> 
-			<li><a href='/'>Новинки</a></li> 
-			<li><a href='/'>Новинки</a></li> 
-			<li><a href='/'>Новинки</a></li> 
-			<li><a href='/'>Новинки</a></li> 
 			<?= $tpl[menu] ?> </ul>
 		</ul>
 	</div>
